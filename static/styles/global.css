@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+input,
+textarea,
+select {
+	width: 100%;
+	padding: 10px;
+	border-radius: 4px;
+	font-size: 16px;
+	color: var(--text-color);
+}
+
+button {
+	display: inline-block;
+	padding: 10px 15px;
+	font-size: 16px;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+p {
+	font-size: 14px;
+}
+
+a {
+	text-decoration: none;
+	outline: none;
+}
+
+:root {
+	--success-message: rgb(41, 205, 41);
+	--error-message: rgb(255, 45, 45);
+	--bg-color: #fff;
+	--text-color: #333333;
+	--box-shadow-color: rgba(0, 0, 0, 0.1);
+	--primary-color: #007bff;
+	--primary-color-hover: #0067d5;
+	--border-color: #e0e0e0;
+	--input-bg-color: #fff;
+	--heading-rules-color: #ff0000;
+	--text-rules-color: rgb(3, 136, 3);
+}
+
+body.dark-theme {
+	--bg-color: #121212;
+	--text-color: #ffffff;
+	--box-shadow-color: rgba(255, 255, 255, 0.1);
+	--primary-color: #1e88e5;
+	--primary-color-hover: #0067d5;
+	--border-color: #333333;
+	--input-bg-color: #333333;
+	--heading-rules-color: #ea0000;
+	--text-rules-color: rgb(0, 177, 0);
+}
