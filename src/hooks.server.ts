@@ -1,19 +1,21 @@
 import type { Handle } from '@sveltejs/kit';
-import { redirect } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
-	const token = event.cookies.get('access_token');
-	console.log('access_token:', token);
+	const theme = event.cookies.get('theme') || 'light';
 
-	const protectedPaths = ['/main', '/profile', '/rules'];
+	const accessToken = event.cookies.get('access_token');
+	const refreshToken = event.cookies.get('refresh_token');
 
-	if (protectedPaths.some((path) => event.url.pathname.startsWith(path))) {
-		if (!token) {
-			return redirect(302, '/login');
-		}
+	console.debug('Access Token:', accessToken);
+	console.debug('Refresh Token:', refreshToken);
+
+	if (!accessToken) {
+		console.warn('Access Token is missing or invalid');
+	}
+	if (!refreshToken) {
+		console.warn('Refresh Token is missing or invalid');
 	}
 
-	const theme = event.cookies.get('theme') || 'light';
 	const response = await resolve(event, {
 		transformPageChunk: ({ html }) => {
 			return html.replace('<body', `<body class="${theme === 'dark' ? 'dark-theme' : ''}"`);

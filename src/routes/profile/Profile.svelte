@@ -1,12 +1,9 @@
 <script lang="ts">
 	import Header from '../../components/Header.svelte';
 
-	import { clearCookies } from '$lib/clearCookies';
-
 	import { goto } from '$app/navigation';
 
 	const logout = () => {
-		clearCookies();
 		goto('/');
 	};
 </script>
