@@ -6,7 +6,13 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter({
+			out: 'build',
+			precompress: false,
+			env: {
+				port: process.env.PORT
+			}
+		})
 	}
 };
 
