@@ -1,19 +1,13 @@
 import type { Handle } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const theme = event.cookies.get('theme') || 'light';
+	const authToken = event.cookies.get('access_token');
+	console.log(`Acces Token: ${authToken}`);
 
-	const accessToken = event.cookies.get('access_token');
-	const refreshToken = event.cookies.get('refresh_token');
-
-	console.debug('Access Token:', accessToken);
-	console.debug('Refresh Token:', refreshToken);
-
-	if (!accessToken) {
-		console.warn('Access Token is missing or invalid');
-	}
-	if (!refreshToken) {
-		console.warn('Refresh Token is missing or invalid');
+	if (!authToken && event.url.pathname.startsWith('/profile')) {
+		throw redirect(302, '/login');
 	}
 
 	const response = await resolve(event, {
