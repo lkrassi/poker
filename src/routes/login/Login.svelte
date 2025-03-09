@@ -113,7 +113,7 @@
 			flex-direction: column;
 			gap: 10px;
 			width: 100%;
-			max-width: 700px;
+			max-width: 500px;
 			background: transparent;
 			backdrop-filter: blur(10px);
 			padding: 20px;

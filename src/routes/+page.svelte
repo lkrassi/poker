@@ -43,7 +43,7 @@
 			align-items: center;
 			gap: 10px;
 			width: 100%;
-			max-width: 700px;
+			max-width: 500px;
 			background: transparent;
 			backdrop-filter: blur(10px);
 			padding: 20px;
@@ -52,7 +52,7 @@
 			box-shadow: 0 4px 10px var(--box-shadow-color);
 
 			.first-page-content__title {
-				font-size: 5rem;
+				font-size: 4rem;
 				color: var(--text-color);
 				text-align: center;
 			}
@@ -60,6 +60,7 @@
 			.first-page-content__crossing-buttons {
 				margin-top: 20px;
 				display: flex;
+				flex-direction: column;
 				gap: 20px;
 
 				#first-page-content__goto-register-btn,
@@ -94,10 +95,6 @@
 				.first-page-content__title {
 					font-size: 3rem;
 				}
-			}
-
-			.first-page-content__crossing-buttons {
-				flex-direction: column;
 			}
 		}
 	}
