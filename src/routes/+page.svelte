@@ -35,6 +35,7 @@
 		.first-page__title {
 			font-size: 5rem;
 			color: var(--text-color);
+			text-align: center;
 		}
 
 		.first-page__crossing-buttons {
@@ -67,7 +68,13 @@
 		}
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 576px) {
+		.first-page {
+			.first-page__title {
+				font-size: 3rem;
+			}
+		}
+
 		.first-page__crossing-buttons {
 			flex-direction: column;
 		}
