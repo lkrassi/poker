@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { loginUser } from './api/login';
+	import { loginUser } from '../../api/auth/login';
 
 	import Message from '../../components/Message.svelte';
 	import ConfirmEmail from '../../components/ConfirmEmail.svelte';

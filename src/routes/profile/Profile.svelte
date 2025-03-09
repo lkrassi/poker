@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { logoutUser } from './api/logout';
+	import { logoutUser } from '../../api/auth/logout';
 
 	import Header from '../../components/Header.svelte';
 	import Message from '../../components/Message.svelte';
