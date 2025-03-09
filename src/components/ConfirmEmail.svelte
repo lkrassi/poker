@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { confirmEmail } from '../routes/register/api/confirmEmail';
+	import { confirmEmail } from '../api/email/confirmEmail';
+
 	import Message from './Message.svelte';
 	import Loader from './Loader.svelte';
 	import Modal from './Modal.svelte';
