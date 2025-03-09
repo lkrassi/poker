@@ -1,4 +1,4 @@
-import { sendConfirmationCode } from './sendCode';
+import { sendConfirmationCode } from '../email/sendCode';
 
 export const registerUser = async (username: string, email: string, password: string) => {
 	try {
