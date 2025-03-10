@@ -12,7 +12,7 @@
 
 <section class="first-page">
 	<div class="first-page-content">
-		<h1 class="first-page-content__title">TEMPLE UNION</h1>
+		<h1 class="first-page-content__title">CARD HOUSE</h1>
 		<div class="first-page-content__crossing-buttons">
 			<button id="first-page-content__goto-register-btn" on:click={goRegister}
 				>Зарегистрировать новый аккакунт</button
