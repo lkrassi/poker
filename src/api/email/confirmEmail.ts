@@ -18,6 +18,9 @@ export const confirmEmail = async (email: string, code: string) => {
 		if (res.status === 401) return { success: false, message: 'Неверный код, повторите попытку' };
 		if (res.status === 404) return { success: false, message: 'Email не зарегистрирован' };
 		if (res.status === 409) return { success: false, message: 'Email уже подтвержден' };
+		if (res.status === 500) {
+			return { success: false, message: 'Произошла ошибка на сервере' };
+		}
 
 		return { success: false, message: data?.message || 'Неизвестная ошибка' };
 	} catch (error) {
