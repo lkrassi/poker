@@ -7,9 +7,9 @@ export const confirmEmail = async (email: string, code: string) => {
 			body: JSON.stringify({ email, code })
 		});
 
-		const data = res.status !== 204 ? await res.json() : null;
+		const data = await res.json();
 
-		if (res.status === 204) {
+		if (res.status === 201) {
 			return { success: true, message: 'Email успешно подтвержден!' };
 		}
 
