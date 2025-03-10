@@ -80,7 +80,7 @@
 		<div class="code-inputs">
 			{#each codes as _, index}
 				<input
-					type="text"
+					type="tel"
 					class="code-input"
 					name="code-{index}"
 					maxlength="1"
