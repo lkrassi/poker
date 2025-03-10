@@ -84,6 +84,10 @@
 			bottom: 20px;
 			align-items: center;
 			justify-content: center;
+
+			.message {
+				text-align: center;
+			}
 		}
 	}
 </style>
