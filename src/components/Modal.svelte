@@ -65,6 +65,7 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+			transform: translateY(-7rem);
 
 			.modal-container__header {
 				display: flex;
@@ -74,7 +75,7 @@
 
 				h2 {
 					margin: 0;
-					color: var(--text-color, #fff);
+					color: var(--bg-color);
 					font-size: 24px;
 				}
 			}
