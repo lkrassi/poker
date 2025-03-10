@@ -65,7 +65,7 @@
 
 				#first-page-content__goto-register-btn,
 				#first-page-content__goto-login-btn {
-					width: 18rem;
+					width: 18.5rem;
 					padding: 10px 15px;
 					font-size: 16px;
 					color: #fff;
