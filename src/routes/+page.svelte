@@ -70,19 +70,18 @@
 					font-size: 16px;
 					color: #fff;
 					background-color: var(--primary-color);
-					border-radius: 20px;
+					border-radius: 15px;
 					cursor: pointer;
-					transition:
-						background-color 0.3s ease,
-						transform 0.1s ease;
+					transition: 0.3s ease;
 
 					&:hover,
 					&:focus {
 						background-color: var(--primary-color-hover);
+						transform: scale(0.99);
 					}
 
 					&:active {
-						transform: scale(0.98);
+						transform: scale(0.99);
 					}
 				}
 			}

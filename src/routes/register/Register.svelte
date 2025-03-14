@@ -85,9 +85,7 @@
 				/>
 			</div>
 
-			<button class="register-form__button" type="submit" disabled={$isLoading}>
-				Зарегистрироваться
-			</button>
+			<button class="register-form__button" type="submit">Зарегистрироваться</button>
 
 			<p class="register-form__have-acc">Уже зарегистрирован? <a href="/login">Войти</a></p>
 		</form>
@@ -122,7 +120,7 @@
 				background: transparent;
 				backdrop-filter: blur(10px);
 				padding: 20px;
-				border-radius: 20px;
+				border-radius: 15px;
 				border: 1px solid rgba(255, 255, 255, 0.2);
 				box-shadow: 0 4px 10px var(--box-shadow-color);
 
@@ -137,38 +135,40 @@
 
 					.register-form__input {
 						width: 100%;
-						padding: 10px;
+						padding: 12px;
 						padding-left: 40px;
 						border: 1px solid rgba(255, 255, 255, 0.3);
-						border-radius: 20px;
+						border-radius: 15px;
 						font-size: 16px;
 						color: var(--text-color);
+						background: transparent;
+						transition: 0.3s ease;
+
+						&::placeholder {
+							color: var(--text-color);
+						}
 
 						&:focus {
 							border-color: var(--primary-color);
 							outline: none;
+							box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.4);
 						}
 					}
 				}
 
 				.register-form__button {
-					padding: 10px 15px;
-					font-size: 16px;
 					color: #fff;
 					background-color: var(--primary-color);
-					border-radius: 20px;
-					cursor: pointer;
-					transition:
-						background-color 0.3s ease,
-						transform 0.1s ease;
+					transition: 0.3s ease;
 
 					&:hover,
 					&:focus {
 						background-color: var(--primary-color-hover);
+						transform: scale(1.01);
 					}
 
 					&:active {
-						transform: scale(0.98);
+						transform: scale(0.99);
 					}
 				}
 
@@ -176,28 +176,6 @@
 					text-align: center;
 					font-size: 16px;
 					color: var(--text-color);
-
-					a {
-						position: relative;
-						text-decoration: none;
-						color: var(--text-color);
-
-						&::after {
-							content: '';
-							position: absolute;
-							left: 0;
-							bottom: 0;
-							width: 0;
-							height: 0.01rem;
-							background-color: var(--primary-color);
-							transition: width 0.3s ease-in-out;
-						}
-
-						&:hover::after,
-						&:focus::after {
-							width: 100%;
-						}
-					}
 				}
 			}
 		}
