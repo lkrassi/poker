@@ -33,11 +33,11 @@ select {
 
 button {
 	display: inline-block;
-	padding: 10px 15px;
-	font-size: 16px;
+	padding: 0.7rem;
+	font-size: 1rem;
 	border: none;
 	outline: none;
-	border-radius: 4px;
+	border-radius: 15px;
 	cursor: pointer;
 }
 
@@ -46,8 +46,28 @@ p {
 }
 
 a {
+	position: relative;
 	text-decoration: none;
-	outline: none;
+	color: var(--text-color);
+}
+
+a::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	width: 0;
+	height: 0.05rem;
+	background-color: var(--primary-color);
+	transition: 0.3s ease;
+	transform: translateX(-50%);
+}
+
+a:hover::after,
+a:focus::after {
+	width: 100%;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 :root {
@@ -63,6 +83,7 @@ a {
 	--heading-rules-color: #ff0000;
 	--text-rules-color: rgb(3, 136, 3);
 	--modal-back-color: rgba(0, 0, 0, 0.5);
+	--scroll-color: #656565;
 }
 
 body.dark-theme {
@@ -75,4 +96,18 @@ body.dark-theme {
 	--input-bg-color: #333333;
 	--heading-rules-color: #ea0000;
 	--text-rules-color: rgb(0, 177, 0);
+}
+
+::-webkit-scrollbar {
+	width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--scroll-color);
+	border-radius: 10px;
+	border: 2px solid var(--bg-color);
 }
