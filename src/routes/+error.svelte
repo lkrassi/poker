@@ -32,25 +32,23 @@
 		row-gap: 20px;
 		text-align: center;
 
+		.go_back__title {
+			color: var(--text-color);
+		}
+
 		#go-back__goto-first-btn {
-			width: 18rem;
-			padding: 10px 15px;
-			font-size: 16px;
 			color: #fff;
-			background-color: #007bff;
-			border-radius: 4px;
-			cursor: pointer;
-			transition:
-				background-color 0.3s ease,
-				transform 0.1s ease;
+			background-color: var(--primary-color);
+			transition: 0.3s ease;
 
 			&:hover,
 			&:focus {
-				background-color: #0056b3;
+				background-color: var(--primary-color-hover);
+				transform: scale(1.01);
 			}
 
 			&:active {
-				transform: scale(0.98);
+				transform: scale(0.99);
 			}
 		}
 	}
