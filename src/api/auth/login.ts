@@ -6,14 +6,19 @@ export const loginUser = async (email: string, password: string) => {
 		const res = await fetch(`${BASE_URL}/auth/sign_in`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ email, password }),
-			credentials: 'include'
+			body: JSON.stringify({ email, password })
 		});
 
+		const data = await res.json();
+
 		if (res.status === 201) {
+			localStorage.setItem('access_token', data.tokens.access_token);
+			localStorage.setItem('refresh_token', data.tokens.refresh_token);
+
 			return {
 				success: true,
-				message: 'Вход успешен!'
+				message: 'Вход успешен!',
+				username: data.user.username
 			};
 		}
 
