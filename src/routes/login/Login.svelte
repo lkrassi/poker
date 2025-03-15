@@ -10,6 +10,7 @@
 
 	import { emailStore } from '../../stores/emailStore';
 	import { isLoading } from '../../stores/loaderStore';
+
 	import { withLoader } from '$lib/loader';
 
 	import { goto } from '$app/navigation';
@@ -29,6 +30,7 @@
 		if (result.success) {
 			messageType = 'success';
 			message = 'Вход успешен!';
+
 			goto('/search-lobby');
 		} else {
 			if (result.message === 'Email не подтвержден') {
