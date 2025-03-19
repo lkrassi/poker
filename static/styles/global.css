@@ -1,0 +1,116 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+input,
+textarea,
+select {
+	width: 100%;
+	padding: 10px;
+	border-radius: 4px;
+	font-size: 16px;
+	color: var(--text-color);
+}
+
+button {
+	display: inline-block;
+	padding: 0.7rem;
+	font-size: 1rem;
+	border: none;
+	outline: none;
+	border-radius: 15px;
+	cursor: pointer;
+}
+
+p {
+	font-size: 1.4rem;
+	color: var(--text-color);
+}
+
+a {
+	position: relative;
+	text-decoration: none;
+	outline: none;
+	color: var(--text-color);
+}
+
+a::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	width: 0;
+	height: 0.05rem;
+	background-color: var(--text-color);
+	transition: 0.3s ease;
+	transform: translateX(-50%);
+}
+
+a:hover::after,
+a:focus::after {
+	width: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+:root {
+	--success-message: rgb(41, 205, 41);
+	--error-message: rgb(255, 45, 45);
+	--bg-color: #000;
+	--bg-color-hover: #c5c5c5;
+	--text-color: #e3e3e3;
+	--text-color-hover: #3e3e3e;
+	--box-shadow-color: rgba(0, 0, 0, 0.1);
+	--modal-overlay-color: rgba(0, 0, 0, 0.8);
+	--primary-color: #292929;
+	--primary-color-hover: #434343;
+	--border-color: rgba(255, 255, 255, 0.3);
+	--input-bg-color: #fff;
+	--heading-rules-color: #ff0000;
+	--text-rules-color: rgb(3, 136, 3);
+	--modal-back-color: rgba(0, 0, 0, 0.5);
+	--scroll-color: #656565;
+}
+
+body.dark-theme {
+	--bg-color: #121212;
+	--text-color: #ffffff;
+	--box-shadow-color: rgba(255, 255, 255, 0.1);
+	--primary-color: #1e88e5;
+	--primary-color-hover: #0067d5;
+	--border-color: #333333;
+	--input-bg-color: #333333;
+	--heading-rules-color: #ea0000;
+	--text-rules-color: rgb(0, 177, 0);
+}
+
+::-webkit-scrollbar {
+	width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--scroll-color);
+	border-radius: 10px;
+	border: 2px solid var(--bg-color);
+}
