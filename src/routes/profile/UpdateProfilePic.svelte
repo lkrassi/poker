@@ -133,6 +133,11 @@
 			&:hover,
 			&:focus {
 				background-color: var(--primary-color-hover);
+				transform: scale(1.01);
+			}
+
+			&:active {
+				transform: scale(0.99);
 			}
 
 			&.dragging {

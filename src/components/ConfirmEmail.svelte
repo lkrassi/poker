@@ -110,13 +110,16 @@
 			height: 40px;
 			text-align: center;
 			font-size: 18px;
-			border: 1px solid var(--border-color, #ccc);
+			border: 1px solid var(--border-color);
+			color: var(--text-color);
+			background: transparent;
+			transition: 0.3s ease;
 			border-radius: 10px;
-			background-color: var(--input-bg-color, #f9f9f9);
 
 			&:focus {
-				border-color: var(--primary-color);
+				border-color: var(--text-color);
 				outline: none;
+				box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.4);
 			}
 		}
 	}
