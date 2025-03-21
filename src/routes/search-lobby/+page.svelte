@@ -1,5 +1,7 @@
 <script>
-	import Main from './SearchLobby.svelte';
+	import SearchLobby from './SearchLobby.svelte';
 </script>
 
-<Main />
+<main class="search-lobby">
+	<SearchLobby />
+</main>

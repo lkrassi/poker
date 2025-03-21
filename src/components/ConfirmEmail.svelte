@@ -77,11 +77,11 @@
 		containerClass="confirm-email-modal"
 	>
 		<form on:submit|preventDefault={handleConfirm}>
-			<div class="code-inputs">
+			<div class="confirm-email-modal__code-inputs">
 				{#each codes as _, index}
 					<input
 						type="tel"
-						class="code-input"
+						class="confirm-email-modal__code-input"
 						name="code-{index}"
 						maxlength="1"
 						bind:value={codes[index]}
@@ -92,20 +92,22 @@
 					/>
 				{/each}
 			</div>
-			<button type="submit" class="submit-btn">Подтвердить</button>
+			<button type="submit" class="confirm-email-modal__submit-btn">Подтвердить</button>
 		</form>
 	</Modal>
 {/if}
 
 <style lang="scss">
-	.code-inputs {
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
-		gap: 10px;
-		margin-bottom: 20px;
+	.confirm-email-modal {
+		&__code-inputs {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin-bottom: 20px;
+		}
 
-		.code-input {
+		&__code-input {
 			width: 40px;
 			height: 40px;
 			text-align: center;
@@ -122,27 +124,27 @@
 				box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.4);
 			}
 		}
-	}
 
-	.submit-btn {
-		width: 100%;
-		padding: 10px;
-		background-color: var(--primary-color);
-		color: #fff;
-		border: none;
-		border-radius: 20px;
-		cursor: pointer;
-		transition:
-			background-color 0.3s ease,
-			transform 0.1s ease;
+		&__submit-btn {
+			width: 100%;
+			padding: 10px;
+			background-color: var(--primary-color);
+			color: #fff;
+			border: none;
+			border-radius: 20px;
+			cursor: pointer;
+			transition:
+				background-color 0.3s ease,
+				transform 0.1s ease;
 
-		&:hover,
-		&:focus {
-			background-color: var(--primary-color-hover);
-		}
+			&:hover,
+			&:focus {
+				background-color: var(--primary-color-hover);
+			}
 
-		&:active {
-			transform: scale(0.98);
+			&:active {
+				transform: scale(0.98);
+			}
 		}
 	}
 

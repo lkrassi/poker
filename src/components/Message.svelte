@@ -47,6 +47,15 @@
 		align-items: flex-end;
 		gap: 10px;
 		z-index: 4;
+
+		@media (max-width: 576px) {
+			left: 0;
+			right: 0;
+			bottom: 20px;
+			margin: 0 auto;
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 
 	.message {
@@ -59,31 +68,20 @@
 		transition:
 			transform 0.5s ease-out,
 			opacity 0.5s ease-out;
-	}
 
-	.message--success {
-		background-color: var(--success-message);
-	}
-
-	.message--error {
-		background-color: var(--error-message);
-	}
-
-	.message--info {
-		background-color: var(--primary-color);
-	}
-
-	@media (max-width: 576px) {
-		.message-container {
-			left: 0;
-			right: 0;
-			bottom: 20px;
-			margin: 0 auto;
-			flex-direction: column;
-			align-items: center;
+		&--success {
+			background-color: var(--success-message);
 		}
 
-		.message {
+		&--error {
+			background-color: var(--error-message);
+		}
+
+		&--info {
+			background-color: var(--primary-color);
+		}
+
+		@media (max-width: 576px) {
 			text-align: center;
 		}
 	}

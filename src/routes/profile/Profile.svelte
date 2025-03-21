@@ -4,6 +4,7 @@
 	import Header from '../../components/Header.svelte';
 	import Ellipsis from './Ellipsis.svelte';
 	import Logout from './Logout.svelte';
+	import DailyReward from './DailyReward.svelte';
 
 	import ChipsIcon from '../../assets/icons/ChipsIcon.svelte';
 
@@ -58,23 +59,25 @@
 	{#if $userStore.user}
 		<div class="profile">
 			<div class="profile__user-data">
-				<div class="profile__user-data__img-actions">
+				<div class="profile__img-actions">
 					<img
-						class="profile__user-data__img"
+						class="profile__img"
 						src={`https://${$userStore.user?.profile_picture_url}`}
 						alt="Аватарка пользователя"
 						on:click={openImageModal}
 					/>
 					<Ellipsis />
 				</div>
-				<h2 class="profile__user-data__username">
+				<h2 class="profile__username">
 					{$userStore.user?.username}
 				</h2>
-				<p class="profile__user-data__balance">
+				<p class="profile__balance">
 					{$userStore.user?.balance}
-					<span class="icon-wrapper"><ChipsIcon /></span>
+					<span class="profile__icon-wrapper"><ChipsIcon /></span>
 				</p>
 			</div>
+
+			<DailyReward />
 
 			<Logout />
 		</div>
@@ -108,8 +111,9 @@
 			display: flex;
 			flex-direction: column;
 			align-items: start;
+			row-gap: 3rem;
 
-			.profile__user-data {
+			&__user-data {
 				display: flex;
 				flex-direction: column;
 				text-align: center;
@@ -117,57 +121,57 @@
 				align-items: center;
 				background: transparent;
 				padding: 0 3rem;
+			}
 
-				.profile__user-data__img-actions {
-					display: flex;
+			&__img-actions {
+				display: flex;
+			}
 
-					.profile__user-data__img {
-						width: 150px;
-						height: 150px;
-						border-radius: 50%;
-						object-fit: cover;
-						margin-bottom: 1.5rem;
-						cursor: pointer;
-						transition:
-							transform 0.3s ease,
-							box-shadow 0.3s ease;
+			&__img {
+				width: 150px;
+				height: 150px;
+				border-radius: 50%;
+				object-fit: cover;
+				margin-bottom: 1.5rem;
+				cursor: pointer;
+				transition:
+					transform 0.3s ease,
+					box-shadow 0.3s ease;
 
-						&:hover {
-							transform: scale(1.05);
-						}
-					}
+				&:hover {
+					transform: scale(1.05);
 				}
+			}
 
-				.profile__user-data__username {
-					font-weight: 600;
-					color: var(--text-color);
-					font-size: 4rem;
-					margin: 0 0 1rem;
-					text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-				}
+			&__username {
+				font-weight: 600;
+				color: var(--text-color);
+				font-size: 4rem;
+				margin: 0 0 1rem;
+				text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+			}
 
-				.profile__user-data__balance {
-					color: var(--text-color);
-					font-size: 2rem;
-					display: flex;
-					align-items: center;
-					gap: 0.5rem;
-					font-weight: 700;
-					transition:
-						transform 0.3s ease,
-						box-shadow 0.3s ease;
+			&__balance {
+				color: var(--text-color);
+				font-size: 2rem;
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				font-weight: 700;
+				transition:
+					transform 0.3s ease,
+					box-shadow 0.3s ease;
+			}
 
-					.icon-wrapper {
-						display: flex;
-						align-items: center;
-						justify-content: center;
+			&__icon-wrapper {
+				display: flex;
+				align-items: center;
+				justify-content: center;
 
-						:global(svg) {
-							width: 2rem;
-							height: 2rem;
-							animation: chipsGlow 2s infinite ease-in-out;
-						}
-					}
+				:global(svg) {
+					width: 2rem;
+					height: 2rem;
+					animation: chipsGlow 2s infinite ease-in-out;
 				}
 			}
 		}
@@ -213,11 +217,11 @@
 			.profile {
 				align-items: center;
 
-				.profile__user-data {
+				&__user-data {
 					margin: 8rem 0 0;
 					padding: 0;
 
-					.profile__user-data__username {
+					.profile__username {
 						font-size: 2.5rem;
 					}
 				}

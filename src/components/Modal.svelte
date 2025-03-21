@@ -47,7 +47,7 @@
 <div class="modal-overlay" on:click={handleClickOutside}>
 	<div class="modal-container {containerClass}" bind:this={modalRef}>
 		<div class="modal-container__header">
-			<h2 class="modal-container__header__title">{title}</h2>
+			<h2 class="modal-container__title">{title}</h2>
 		</div>
 		<div class="modal-container__body">
 			<slot />
@@ -85,20 +85,20 @@
 			flex-direction: column;
 			align-items: center;
 
-			.modal-container__header {
+			&__header {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
 				margin-bottom: 20px;
-
-				.modal-container__header__title {
-					margin: 0;
-					color: var(--text-color);
-					font-size: 2rem;
-				}
 			}
 
-			.modal-container__body {
+			&__title {
+				margin: 0;
+				color: var(--text-color);
+				font-size: 2rem;
+			}
+
+			&__body {
 				display: flex;
 				flex-direction: column;
 				align-items: center;

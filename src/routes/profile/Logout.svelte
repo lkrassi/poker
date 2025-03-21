@@ -14,19 +14,19 @@
 	};
 </script>
 
-<div class="profile__logout">
-	<button class="logout-btn" on:click={handleLogout}>Выйти</button>
+<div class="logout">
+	<button class="logout__button" on:click={handleLogout}>Выйти</button>
 </div>
 
 <style lang="scss">
-	.profile__logout {
+	.logout {
 		width: 100%;
 		display: flex;
 		justify-content: center;
 		margin-top: 2rem;
 
-		.logout-btn {
-			color: #fff;
+		&__button {
+			color: var(--text-color);
 			background-color: var(--primary-color);
 			transition: 0.3s ease;
 			width: 10rem;

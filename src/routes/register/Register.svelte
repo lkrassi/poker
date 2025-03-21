@@ -38,7 +38,7 @@
 	<section class="register-container">
 		<form class="register-form" on:submit|preventDefault={handleSubmit}>
 			<h2 class="register-form__title">Регистрация</h2>
-			<div class="input-container">
+			<div class="register-form__input-container">
 				<UserIcon />
 				<input
 					class="register-form__input"
@@ -51,7 +51,7 @@
 				/>
 			</div>
 
-			<div class="input-container">
+			<div class="register-form__input-container">
 				<EmailIcon />
 				<input
 					class="register-form__input"
@@ -62,7 +62,7 @@
 				/>
 			</div>
 
-			<div class="input-container">
+			<div class="register-form__input-container">
 				<PasswordIcon />
 				<input
 					class="register-form__input"
@@ -110,39 +110,39 @@
 				border: 1px solid rgba(255, 255, 255, 0.2);
 				box-shadow: 0 4px 10px var(--box-shadow-color);
 
-				.register-form__title {
+				&__title {
 					text-align: center;
 					font-size: 2.2rem;
 					color: var(--text-color);
 				}
 
-				.input-container {
+				&__input-container {
 					position: relative;
 					width: 100%;
+				}
 
-					.register-form__input {
-						width: 100%;
-						padding-left: 40px;
-						border: 1px solid var(--border-color);
-						border-radius: 15px;
-						font-size: 16px;
+				&__input {
+					width: 100%;
+					padding-left: 40px;
+					border: 1px solid var(--border-color);
+					border-radius: 15px;
+					font-size: 16px;
+					color: var(--text-color);
+					background: transparent;
+					transition: 0.3s ease;
+
+					&::placeholder {
 						color: var(--text-color);
-						background: transparent;
-						transition: 0.3s ease;
+					}
 
-						&::placeholder {
-							color: var(--text-color);
-						}
-
-						&:focus {
-							border-color: var(--text-color);
-							outline: none;
-							box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.4);
-						}
+					&:focus {
+						border-color: var(--text-color);
+						outline: none;
+						box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.4);
 					}
 				}
 
-				.register-form__button {
+				&__button {
 					color: var(--text-color);
 					background-color: var(--primary-color);
 					transition: 0.3s ease;
@@ -158,7 +158,7 @@
 					}
 				}
 
-				.register-form__have-acc {
+				&__have-acc {
 					text-align: center;
 					font-size: 16px;
 					color: var(--text-color);

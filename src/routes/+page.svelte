@@ -49,7 +49,7 @@
 
 			.first-page-content__title {
 				font-size: 8rem;
-				color: #fff;
+				color: var(--text-color);
 				text-align: center;
 			}
 
@@ -63,7 +63,7 @@
 					width: 18.5rem;
 					padding: 10px 15px;
 					font-size: 16px;
-					color: #fff;
+					color: var(--text-color);
 					background-color: var(--primary-color);
 					border-radius: 15px;
 					cursor: pointer;

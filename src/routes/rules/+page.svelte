@@ -2,6 +2,6 @@
 	import Rules from './Rules.svelte';
 </script>
 
-<main class="register">
+<main class="rules">
 	<Rules />
 </main>

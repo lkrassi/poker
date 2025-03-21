@@ -8,9 +8,10 @@
 
 <section class="error-page">
 	<div class="error-page__go-back">
-		<h1 class="error-page_go-back__title">Страница не найдена</h1>
-		<button id="error-page__go-back__goto-first-btn" on:click={goFirst}>Вернуться на главную</button
-		>
+		<h1 class="error-page__go-back__title">Страница не найдена</h1>
+		<button class="error-page__go-back__goto-first-btn" on:click={goFirst}>
+			Вернуться на главную
+		</button>
 	</div>
 </section>
 
@@ -22,7 +23,7 @@
 		background-position: center;
 		background-repeat: no-repeat;
 
-		.error-page__go-back {
+		&__go-back {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -31,16 +32,20 @@
 			row-gap: 20px;
 			text-align: center;
 
-			.error-page_go-back__title {
+			&__title {
 				color: var(--text-color);
 				font-size: 4rem;
 			}
 
-			#error-page__go-back__goto-first-btn {
+			&__goto-first-btn {
 				color: var(--text-color);
 				background-color: var(--primary-color);
 				transition: 0.3s ease;
 				width: 15rem;
+				padding: 10px;
+				border: none;
+				border-radius: 20px;
+				cursor: pointer;
 
 				&:hover,
 				&:focus {
@@ -58,7 +63,7 @@
 	@media (max-width: 576px) {
 		.error-page {
 			.error-page__go-back {
-				.error-page_go-back__title {
+				.error-page__go-back__title {
 					color: var(--text-color);
 					font-size: 2rem;
 				}

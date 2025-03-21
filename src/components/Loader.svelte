@@ -32,13 +32,13 @@
 </script>
 
 <div class="loader">
-	<div class="card-container">
-		<div class="card">
-			<div class="card-face front">
-				<span class="suit">{frontCard.suit}</span>
+	<div class="loader__card-container">
+		<div class="loader__card">
+			<div class="loader__card-face loader__card-face--front">
+				<span class="loader__suit">{frontCard.suit}</span>
 			</div>
-			<div class="card-face back">
-				<span class="suit">{backCard.suit}</span>
+			<div class="loader__card-face loader__card-face--back">
+				<span class="loader__suit">{backCard.suit}</span>
 			</div>
 		</div>
 	</div>
@@ -57,43 +57,43 @@
 		height: 100%;
 		width: 100%;
 		z-index: 4;
-	}
 
-	.card-container {
-		perspective: 1000px;
-	}
+		&__card-container {
+			perspective: 1000px;
+		}
 
-	.card {
-		width: 4rem;
-		height: 6rem;
-		position: relative;
-		transform-style: preserve-3d;
-		animation: flip 2s infinite;
-	}
+		&__card {
+			width: 4rem;
+			height: 6rem;
+			position: relative;
+			transform-style: preserve-3d;
+			animation: flip 2s infinite;
+		}
 
-	.card-face {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: #000;
-		color: #fff;
-		border-radius: 0.3rem;
-		backface-visibility: hidden;
-	}
+		&__card-face {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #000;
+			color: #fff;
+			border-radius: 0.3rem;
+			backface-visibility: hidden;
 
-	.front {
-		transform: rotateY(0deg);
-	}
+			&--front {
+				transform: rotateY(0deg);
+			}
 
-	.back {
-		transform: rotateY(180deg);
-	}
+			&--back {
+				transform: rotateY(180deg);
+			}
+		}
 
-	.suit {
-		font-size: 1.5rem;
+		&__suit {
+			font-size: 1.5rem;
+		}
 	}
 
 	@keyframes flip {

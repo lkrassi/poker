@@ -43,10 +43,10 @@
 	<section class="login-container">
 		<form class="login-form" on:submit|preventDefault={handleSubmit}>
 			<h2 class="login-form__title">Вход</h2>
-			<div class="input-container">
+			<div class="login-form__input-container">
 				<EmailIcon />
 				<input
-					class="register-form__input"
+					class="login-form__input"
 					type="email"
 					bind:value={email}
 					placeholder="Email"
@@ -54,10 +54,10 @@
 				/>
 			</div>
 
-			<div class="input-container">
+			<div class="login-form__input-container">
 				<PasswordIcon />
 				<input
-					class="register-form__input"
+					class="login-form__input"
 					type="password"
 					bind:value={password}
 					placeholder="Пароль"
@@ -105,39 +105,39 @@
 			border: 1px solid rgba(255, 255, 255, 0.2);
 			box-shadow: 0 4px 10px var(--box-shadow-color);
 
-			.login-form__title {
+			&__title {
 				text-align: center;
 				font-size: 2.2rem;
 				color: var(--text-color);
 			}
 
-			.input-container {
+			&__input-container {
 				position: relative;
 				width: 100%;
+			}
 
-				.register-form__input {
-					width: 100%;
-					padding-left: 40px;
-					border: 1px solid var(--border-color);
-					border-radius: 15px;
-					font-size: 16px;
+			&__input {
+				width: 100%;
+				padding-left: 40px;
+				border: 1px solid var(--border-color);
+				border-radius: 15px;
+				font-size: 16px;
+				color: var(--text-color);
+				background: transparent;
+				transition: 0.3s ease;
+
+				&::placeholder {
 					color: var(--text-color);
-					background: transparent;
-					transition: 0.3s ease;
+				}
 
-					&::placeholder {
-						color: var(--text-color);
-					}
-
-					&:focus {
-						border-color: var(--text-color);
-						outline: none;
-						box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.4);
-					}
+				&:focus {
+					border-color: var(--text-color);
+					outline: none;
+					box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.4);
 				}
 			}
 
-			.login-form__button {
+			&__button {
 				color: var(--text-color);
 				background-color: var(--primary-color);
 				transition: 0.3s ease;
@@ -152,12 +152,12 @@
 					transform: scale(0.99);
 				}
 			}
-		}
 
-		.login-form__no-acc {
-			text-align: center;
-			font-size: 16px;
-			color: var(--text-color);
+			&__no-acc {
+				text-align: center;
+				font-size: 16px;
+				color: var(--text-color);
+			}
 		}
 	}
 </style>

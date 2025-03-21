@@ -71,7 +71,9 @@
 <form class="update-profile-pic" on:submit={submitForm}>
 	<h2 class="update-profile-pic__title">Смена аватара профиля</h2>
 	<div
-		class="update-profile-pic__file-wrapper {isDragging ? 'dragging' : ''}"
+		class="update-profile-pic__file-wrapper {isDragging
+			? 'update-profile-pic__file-wrapper--dragging'
+			: ''}"
 		on:dragenter={handleDragOver}
 		on:dragover={handleDragOver}
 		on:dragleave={handleDragLeave}
@@ -83,13 +85,13 @@
 	>
 		<input
 			id="file-input"
-			class="update-profile-pic__file-wrapper__selection"
+			class="update-profile-pic__file-input"
 			type="file"
 			accept="image/jpeg, image/png, image/gif"
 			bind:this={fileInput}
 			on:change={handleFileInputChange}
 		/>
-		<label for="file-input" class="update-profile-pic__file-wrapper__label">
+		<label for="file-input" class="update-profile-pic__file-label">
 			Выберите или перетащите файл сюда
 		</label>
 	</div>
@@ -115,12 +117,12 @@
 		align-items: center;
 		gap: 1.5rem;
 
-		.update-profile-pic__title {
+		&__title {
 			font-size: 2.2rem;
 			color: var(--text-color);
 		}
 
-		.update-profile-pic__file-wrapper {
+		&__file-wrapper {
 			position: relative;
 			width: 100%;
 			border: 2px dashed var(--text-color);
@@ -140,36 +142,46 @@
 				transform: scale(0.99);
 			}
 
-			&.dragging {
+			&--dragging {
 				animation: pulse 2s infinite;
-			}
-
-			.update-profile-pic__file-wrapper__selection {
-				opacity: 0;
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				cursor: pointer;
 			}
 		}
 
-		.update-profile-pic__preview {
+		&__file-input {
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			cursor: pointer;
+		}
+
+		&__file-label {
+			display: block;
+			text-align: center;
+			cursor: pointer;
+		}
+
+		&__preview {
 			text-align: center;
 
-			.update-profile-pic__preview-image {
+			&-image {
 				max-width: 15rem;
 				max-height: 10rem;
 				border-radius: 1rem;
 			}
 		}
 
-		.update-profile-pic__button {
+		&__button {
 			color: var(--text-color);
 			background-color: var(--primary-color);
 			transition: 0.3s ease;
 			width: 100%;
+			padding: 10px;
+			border: none;
+			border-radius: 15px;
+			cursor: pointer;
 
 			&:hover,
 			&:focus {
@@ -200,7 +212,7 @@
 
 	@media (max-width: 576px) {
 		.update-profile-pic {
-			.update-profile-pic__title {
+			&__title {
 				font-size: 1.9rem;
 			}
 		}

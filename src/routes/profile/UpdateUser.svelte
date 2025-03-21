@@ -33,7 +33,7 @@
 
 <form class="update-username">
 	<h2 class="update-username__title">Смена имени</h2>
-	<div class="input-container">
+	<div class="update-username__input-container">
 		<UserIcon />
 		<input
 			class="update-username__input"
@@ -50,12 +50,18 @@
 
 <style lang="scss">
 	.update-username {
-		.update-username__title {
+		&__title {
 			font-size: 2.2rem;
 			color: var(--text-color);
 		}
 
-		.update-username__input {
+		&__input-container {
+			position: relative;
+			display: flex;
+			align-items: center;
+		}
+
+		&__input {
 			width: 100%;
 			padding-left: 40px;
 			border: 1px solid var(--border-color);
@@ -76,11 +82,15 @@
 			}
 		}
 
-		.update-username__button {
+		&__button {
 			color: var(--text-color);
 			background-color: var(--primary-color);
 			transition: 0.3s ease;
 			width: 100%;
+			padding: 10px;
+			border: none;
+			border-radius: 15px;
+			cursor: pointer;
 
 			&:hover,
 			&:focus {
@@ -96,7 +106,7 @@
 
 	@media (max-width: 576px) {
 		.update-username {
-			.update-username__title {
+			&__title {
 				font-size: 1.9rem;
 			}
 		}
