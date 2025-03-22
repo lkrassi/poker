@@ -113,7 +113,8 @@
 
 			&__input-container {
 				position: relative;
-				width: 100%;
+				display: flex;
+				align-items: center;
 			}
 
 			&__input {

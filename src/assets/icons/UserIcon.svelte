@@ -8,6 +8,6 @@
 <style lang="scss">
 	svg {
 		position: absolute;
-		margin: 10px 0 0 10px;
+		margin: 0 0 0 10px;
 	}
 </style>
