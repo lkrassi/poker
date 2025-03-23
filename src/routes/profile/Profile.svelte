@@ -118,9 +118,8 @@
 				flex-direction: column;
 				text-align: center;
 				justify-content: center;
-				align-items: center;
+				align-items: start;
 				background: transparent;
-				padding: 0 3rem;
 			}
 
 			&__img-actions {
@@ -220,6 +219,7 @@
 				&__user-data {
 					margin: 8rem 0 0;
 					padding: 0;
+					align-items: center;
 
 					.profile__username {
 						font-size: 2.5rem;
