@@ -178,10 +178,6 @@
 			background-color: var(--primary-color);
 			transition: 0.3s ease;
 			width: 100%;
-			padding: 10px;
-			border: none;
-			border-radius: 15px;
-			cursor: pointer;
 
 			&:hover,
 			&:focus {
