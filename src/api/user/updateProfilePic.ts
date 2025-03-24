@@ -1,5 +1,6 @@
 import { get } from 'svelte/store';
 import { userStore } from '../../stores/userStore';
+import fetchWithRefresh from '$lib/fetchWithRefresh';
 
 export const updateProfilePic = async (file: File) => {
 	try {
@@ -25,7 +26,7 @@ export const updateProfilePic = async (file: File) => {
 		const formData = new FormData();
 		formData.append('profile_pic', file);
 
-		const res = await fetch(`${BASE_URL}/user/profile_pic`, {
+		const res = await fetchWithRefresh(`${BASE_URL}/user/profile_pic`, {
 			method: 'PUT',
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('access_token')}`

@@ -1,5 +1,6 @@
 import { setUser, userStore } from '../../stores/userStore';
 import { get } from 'svelte/store';
+import fetchWithRefresh from '$lib/fetchWithRefresh';
 
 export const updateUser = async (newUsername: string) => {
 	try {
@@ -14,7 +15,7 @@ export const updateUser = async (newUsername: string) => {
 			return { success: false, message: 'Имя пользователя не может быть пустым' };
 		}
 
-		const res = await fetch(`${BASE_URL}/user/`, {
+		const res = await fetchWithRefresh(`${BASE_URL}/user/`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
@@ -46,7 +47,6 @@ export const updateUser = async (newUsername: string) => {
 
 		return { success: false, message: 'Ошибка при обновлении данных пользователя' };
 	} catch (error) {
-		console.error('Ошибка при запросе обновления пользователя:', error);
 		return { success: false, message: 'Ошибка сети, проверьте подключение' };
 	}
 };

@@ -26,7 +26,7 @@ export const loginUser = async (email: string, password: string) => {
 
 		if (res.status === 400)
 			return { success: false, message: 'Некорректные данные, проверьте ввод' };
-		if (res.status === 401) return { success: false, message: 'Неверный пароль' };
+		if (res.status === 401) return { success: false, message: 'Неверный логин или пароль' };
 		if (res.status === 403) {
 			await sendConfirmationCode(email, password);
 			return { success: false, message: 'Email не подтвержден' };

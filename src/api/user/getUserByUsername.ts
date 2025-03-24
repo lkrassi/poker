@@ -1,5 +1,6 @@
 import { setUser, userStore } from '../../stores/userStore';
 import { get } from 'svelte/store';
+import fetchWithRefresh from '$lib/fetchWithRefresh';
 
 export const getUserByUsername = async () => {
 	try {
@@ -10,7 +11,7 @@ export const getUserByUsername = async () => {
 			return { success: false, message: 'Имя пользователя не может быть пустым' };
 		}
 
-		const res = await fetch(`${BASE_URL}/user/${user.username}`, {
+		const res = await fetchWithRefresh(`${BASE_URL}/user/${user.username}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
