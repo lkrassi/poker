@@ -9,6 +9,7 @@
 
 	let modalRef: HTMLDivElement | null = null;
 	let trap: any;
+	let scrollY = 0;
 
 	const handleClickOutside = (event: MouseEvent) => {
 		if (closable && event.target === modalRef?.parentElement) {
@@ -22,20 +23,41 @@
 		}
 	};
 
+	const lockScroll = () => {
+		scrollY = window.scrollY;
+		document.body.style.position = 'fixed';
+		document.body.style.top = `-${scrollY}px`;
+		document.body.style.width = '100%';
+		document.body.style.overflow = 'hidden';
+	};
+
+	const unlockScroll = () => {
+		document.body.style.position = '';
+		document.body.style.top = '';
+		document.body.style.width = '';
+		document.body.style.overflow = '';
+		window.scrollTo(0, scrollY);
+	};
+
 	onMount(() => {
+		lockScroll();
 		document.addEventListener('keydown', handleKeyDown);
 
 		if (modalRef) {
 			trap = createFocusTrap(modalRef, {
 				allowOutsideClick: true,
 				escapeDeactivates: closable,
-				clickOutsideDeactivates: closable
+				clickOutsideDeactivates: closable,
+				fallbackFocus: modalRef,
+				initialFocus: modalRef,
+				returnFocusOnDeactivate: true
 			});
 			trap.activate();
 		}
 	});
 
 	onDestroy(() => {
+		unlockScroll();
 		document.removeEventListener('keydown', handleKeyDown);
 
 		if (trap) {
@@ -45,7 +67,13 @@
 </script>
 
 <div class="modal-overlay" on:click={handleClickOutside}>
-	<div class="modal-container {containerClass}" bind:this={modalRef}>
+	<div
+		class="modal-container {containerClass}"
+		bind:this={modalRef}
+		role="dialog"
+		aria-modal="true"
+		aria-labelledby="modal-title"
+	>
 		<div class="modal-container__header">
 			<h2 class="modal-container__title">{title}</h2>
 		</div>
@@ -57,45 +85,44 @@
 
 <style lang="scss">
 	.modal-overlay {
-		border-radius: 0;
 		position: fixed;
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 100%;
+		right: 0;
+		bottom: 0;
 		background-color: var(--modal-back-color);
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		z-index: 3;
-		padding: 10px;
+		z-index: 1000;
+		padding: 1rem;
+		overflow-y: auto;
+		overscroll-behavior: contain;
 
 		.modal-container {
 			backdrop-filter: blur(10px);
-			padding: 20px;
-			border-radius: 20px;
+			padding: 1.5rem;
+			border-radius: 1.25rem;
 			border: 1px solid rgba(255, 255, 255, 0.2);
-			box-shadow: 0 4px 10px var(--box-shadow-color);
-			width: 90vw;
-			max-width: 500px;
-			height: auto;
-			max-height: 90vh;
+			box-shadow: 0 0.25rem 0.625rem var(--box-shadow-color);
+			width: min(90vw, 31.25rem);
+			max-height: calc(100vh - 2rem);
 			overflow: auto;
 			display: flex;
 			flex-direction: column;
-			align-items: center;
+			outline: none;
 
 			&__header {
 				display: flex;
-				justify-content: space-between;
+				justify-content: center;
 				align-items: center;
-				margin-bottom: 20px;
+				margin-bottom: 1.25rem;
 			}
 
 			&__title {
 				margin: 0;
 				color: var(--text-color);
-				font-size: 2rem;
+				font-size: 1.5rem;
 			}
 
 			&__body {
