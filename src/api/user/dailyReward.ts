@@ -13,7 +13,7 @@ export const claimDailyReward = async () => {
 
 		if (res.status === 200) {
 			const data = await res.json();
-			return { success: true, amount: data.amount, angle_delta: data.angle_delta };
+			return { success: true, amount: data.amount, sector: data.sector };
 		}
 
 		if (res.status === 400) {
