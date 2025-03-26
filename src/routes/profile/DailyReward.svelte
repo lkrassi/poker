@@ -193,6 +193,7 @@
 			transform: rotate(-90deg);
 			text-align: center;
 			font-size: 1rem;
+			color: var(--text-color);
 		}
 	}
 

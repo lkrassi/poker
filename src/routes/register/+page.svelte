@@ -2,6 +2,6 @@
 	import Register from './Register.svelte';
 </script>
 
-<main class="register">
+<main class="register background-image">
 	<Register />
 </main>

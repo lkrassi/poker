@@ -30,140 +30,129 @@
 	};
 </script>
 
-<div class="register-page">
-	{#if showConfirmEmail}
-		<ConfirmEmail on:close={() => (showConfirmEmail = false)} />
-	{/if}
+{#if showConfirmEmail}
+	<ConfirmEmail on:close={() => (showConfirmEmail = false)} />
+{/if}
 
-	<section class="register-container">
-		<form class="register-form" on:submit|preventDefault={handleSubmit}>
-			<h2 class="register-form__title">Регистрация</h2>
-			<div class="register-form__input-container">
-				<UserIcon />
-				<input
-					class="register-form__input"
-					type="text"
-					bind:value={username}
-					placeholder="Имя"
-					required
-					minlength="4"
-					maxlength="32"
-				/>
-			</div>
+<section class="register-container">
+	<form class="register-form" on:submit|preventDefault={handleSubmit}>
+		<h2 class="register-form__title">Регистрация</h2>
+		<div class="register-form__input-container">
+			<UserIcon />
+			<input
+				class="register-form__input"
+				type="text"
+				bind:value={username}
+				placeholder="Имя"
+				required
+				minlength="4"
+				maxlength="32"
+			/>
+		</div>
 
-			<div class="register-form__input-container">
-				<EmailIcon />
-				<input
-					class="register-form__input"
-					type="email"
-					bind:value={email}
-					placeholder="Email"
-					required
-				/>
-			</div>
+		<div class="register-form__input-container">
+			<EmailIcon />
+			<input
+				class="register-form__input"
+				type="email"
+				bind:value={email}
+				placeholder="Email"
+				required
+			/>
+		</div>
 
-			<div class="register-form__input-container">
-				<PasswordIcon />
-				<input
-					class="register-form__input"
-					type="password"
-					bind:value={password}
-					placeholder="Пароль"
-					required
-					minlength="8"
-					maxlength="32"
-				/>
-			</div>
+		<div class="register-form__input-container">
+			<PasswordIcon />
+			<input
+				class="register-form__input"
+				type="password"
+				bind:value={password}
+				placeholder="Пароль"
+				required
+				minlength="8"
+				maxlength="32"
+			/>
+		</div>
 
-			<button class="register-form__button" type="submit">Зарегистрироваться</button>
+		<button class="register-form__button" type="submit">Зарегистрироваться</button>
 
-			<p class="register-form__have-acc">Уже зарегистрирован? <a href="/login">Войти</a></p>
-		</form>
-	</section>
-</div>
+		<p class="register-form__have-acc">Уже зарегистрирован? <a href="/login">Войти</a></p>
+	</form>
+</section>
 
 <style lang="scss">
-	.register-page {
-		position: relative;
+	.register-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		min-height: 100vh;
 
-		.register-container {
+		.register-form {
 			display: flex;
-			justify-content: center;
-			align-items: center;
-			min-height: 100vh;
-			background-image: url(../../assets/images/background.jpg);
-			background-size: cover;
-			background-position: center;
-			background-repeat: no-repeat;
+			flex-direction: column;
+			gap: 10px;
+			width: 100%;
+			max-width: 500px;
+			background: transparent;
+			backdrop-filter: blur(10px);
+			padding: 20px;
+			border-radius: 15px;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			box-shadow: 0 4px 10px var(--box-shadow-color);
 
-			.register-form {
+			&__title {
+				text-align: center;
+				font-size: 2.2rem;
+				color: var(--text-color);
+			}
+
+			&__input-container {
+				position: relative;
 				display: flex;
-				flex-direction: column;
-				gap: 10px;
+				align-items: center;
+			}
+
+			&__input {
 				width: 100%;
-				max-width: 500px;
-				background: transparent;
-				backdrop-filter: blur(10px);
-				padding: 20px;
+				padding-left: 40px;
+				border: 1px solid var(--border-color);
 				border-radius: 15px;
-				border: 1px solid rgba(255, 255, 255, 0.2);
-				box-shadow: 0 4px 10px var(--box-shadow-color);
+				font-size: 16px;
+				color: var(--text-color);
+				background: transparent;
+				transition: 0.3s ease;
 
-				&__title {
-					text-align: center;
-					font-size: 2.2rem;
+				&::placeholder {
 					color: var(--text-color);
 				}
 
-				&__input-container {
-					position: relative;
-					display: flex;
-					align-items: center;
+				&:focus {
+					border-color: var(--text-color);
+					outline: none;
+					box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.4);
+				}
+			}
+
+			&__button {
+				color: var(--text-color);
+				background-color: var(--primary-color);
+				transition: 0.3s ease;
+
+				&:hover,
+				&:focus {
+					background-color: var(--primary-color-hover);
+					transform: scale(1.01);
 				}
 
-				&__input {
-					width: 100%;
-					padding-left: 40px;
-					border: 1px solid var(--border-color);
-					border-radius: 15px;
-					font-size: 16px;
-					color: var(--text-color);
-					background: transparent;
-					transition: 0.3s ease;
-
-					&::placeholder {
-						color: var(--text-color);
-					}
-
-					&:focus {
-						border-color: var(--text-color);
-						outline: none;
-						box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.4);
-					}
+				&:active {
+					transform: scale(0.99);
 				}
+			}
 
-				&__button {
-					color: var(--text-color);
-					background-color: var(--primary-color);
-					transition: 0.3s ease;
-
-					&:hover,
-					&:focus {
-						background-color: var(--primary-color-hover);
-						transform: scale(1.01);
-					}
-
-					&:active {
-						transform: scale(0.99);
-					}
-				}
-
-				&__have-acc {
-					text-align: center;
-					font-size: 16px;
-					color: var(--text-color);
-				}
+			&__have-acc {
+				text-align: center;
+				font-size: 16px;
+				color: var(--text-color);
 			}
 		}
 	}

@@ -1,5 +1,9 @@
 <script lang="ts">
 	import Profile from './Profile.svelte';
+	import Header from '../../components/Header.svelte';
 </script>
 
-<Profile />
+<main class="profile background-image">
+	<Header />
+	<Profile />
+</main>

@@ -2,6 +2,6 @@
 	import Login from './Login.svelte';
 </script>
 
-<main class="login">
+<main class="login background-image">
 	<Login />
 </main>

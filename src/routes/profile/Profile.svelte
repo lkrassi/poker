@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { getUserByUsername } from '../../api/user/getUserByUsername';
 
-	import Header from '../../components/Header.svelte';
 	import Ellipsis from './Ellipsis.svelte';
 	import Logout from './Logout.svelte';
 	import DailyReward from './DailyReward.svelte';
@@ -54,8 +53,6 @@
 </script>
 
 <section class="profile-page">
-	<Header />
-
 	{#if $userStore.user}
 		<div class="profile">
 			<div class="profile__user-data">
@@ -111,15 +108,6 @@
 
 <style lang="scss">
 	.profile-page {
-		min-height: 100vh;
-		background-image: url(../../assets/images/background.jpg);
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
-		width: 100%;
-		padding: 1rem;
-		box-sizing: border-box;
-
 		.profile {
 			display: flex;
 			justify-content: space-between;

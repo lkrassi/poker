@@ -94,10 +94,10 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		z-index: 1000;
-		padding: 1rem;
+		z-index: 3;
 		overflow-y: auto;
 		overscroll-behavior: contain;
+		min-height: 100vh;
 
 		.modal-container {
 			backdrop-filter: blur(10px);
