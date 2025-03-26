@@ -20,7 +20,6 @@
 
 <style lang="scss">
 	.logout {
-		width: 100%;
 		display: flex;
 		justify-content: center;
 		margin-top: 2rem;
