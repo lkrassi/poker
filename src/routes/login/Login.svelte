@@ -39,42 +39,40 @@
 	};
 </script>
 
-<div class="login-page">
-	<section class="login-container">
-		<form class="login-form" on:submit|preventDefault={handleSubmit}>
-			<h2 class="login-form__title">Вход</h2>
-			<div class="login-form__input-container">
-				<EmailIcon />
-				<input
-					class="login-form__input"
-					type="email"
-					bind:value={email}
-					placeholder="Email"
-					required
-				/>
-			</div>
+<section class="login-container">
+	<form class="login-form" on:submit|preventDefault={handleSubmit}>
+		<h2 class="login-form__title">Вход</h2>
+		<div class="login-form__input-container">
+			<EmailIcon />
+			<input
+				class="login-form__input"
+				type="email"
+				bind:value={email}
+				placeholder="Email"
+				required
+			/>
+		</div>
 
-			<div class="login-form__input-container">
-				<PasswordIcon />
-				<input
-					class="login-form__input"
-					type="password"
-					bind:value={password}
-					placeholder="Пароль"
-					required
-					minlength="8"
-					maxlength="32"
-				/>
-			</div>
-			<button class="login-form__button" type="submit">Войти</button>
-			<p class="login-form__no-acc">Ещё нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
-		</form>
-	</section>
+		<div class="login-form__input-container">
+			<PasswordIcon />
+			<input
+				class="login-form__input"
+				type="password"
+				bind:value={password}
+				placeholder="Пароль"
+				required
+				minlength="8"
+				maxlength="32"
+			/>
+		</div>
+		<button class="login-form__button" type="submit">Войти</button>
+		<p class="login-form__no-acc">Ещё нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+	</form>
+</section>
 
-	{#if showConfirmEmail}
-		<ConfirmEmail />
-	{/if}
-</div>
+{#if showConfirmEmail}
+	<ConfirmEmail />
+{/if}
 
 <style lang="scss">
 	.login-container {
