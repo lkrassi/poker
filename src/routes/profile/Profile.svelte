@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { getUserByUsername } from '../../api/user/getUserByUsername';
-
 	import Ellipsis from './Ellipsis.svelte';
 	import Logout from './Logout.svelte';
 	import DailyReward from './DailyReward.svelte';
 
 	import ChipsIcon from '../../assets/icons/ChipsIcon.svelte';
+
+	import { apiFacade } from '$lib/apiFacade';
 
 	import { userStore, setUser } from '../../stores/userStore';
 	import { showMessage } from '../../stores/messageStore';
@@ -20,7 +20,7 @@
 		if (storedUser) {
 			setUser(JSON.parse(storedUser));
 		} else {
-			await getUserByUsername();
+			await apiFacade.getUserByUsername();
 		}
 
 		if (!$userStore.user) {
@@ -56,12 +56,13 @@
 	<div class="profile">
 		<div class="profile__user-data">
 			<div class="profile__img-actions">
-				<img
-					class="profile__img"
-					src={`https://${$userStore.user?.profile_picture_url}`}
-					alt="Аватарка пользователя"
-					on:click={openImageModal}
-				/>
+				<button class="profile__img" on:click={openImageModal}>
+					<img
+						class="profile__img"
+						src={`https://${$userStore.user?.profile_picture_url}`}
+						alt="Аватарка пользователя"
+					/>
+				</button>
 				<Ellipsis />
 			</div>
 			<h2 class="profile__username">
@@ -94,7 +95,7 @@
 	.profile {
 		display: flex;
 		justify-content: space-between;
-		align-items: flex-start;
+		align-items: center;
 		width: 100%;
 		margin: 0 auto;
 		padding: 0 5rem;
@@ -107,7 +108,7 @@
 			text-align: center;
 			background: transparent;
 			backdrop-filter: blur(10px);
-			padding: 20px;
+			padding: 5rem;
 			border-radius: 15px;
 			box-shadow: 0 4px 10px var(--box-shadow-color);
 		}
@@ -117,8 +118,8 @@
 		}
 
 		&__img {
-			width: 150px;
-			height: 150px;
+			width: 11rem;
+			height: 11rem;
 			border-radius: 50%;
 			object-fit: cover;
 			margin-bottom: 1.5rem;
@@ -128,7 +129,7 @@
 				box-shadow 0.3s ease;
 
 			&:hover {
-				transform: scale(1.05);
+				transform: scale(1.01);
 			}
 		}
 
@@ -200,7 +201,7 @@
 			padding: 0;
 
 			&__user-data {
-				margin: 8rem 0 0;
+				margin: 6rem 0 0;
 				align-items: center;
 
 				.profile__username {

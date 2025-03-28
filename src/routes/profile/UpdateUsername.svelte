@@ -1,11 +1,10 @@
 <script lang="ts">
-	import { updateUser } from '../../api/user/updateUser';
-
 	import UserIcon from '../../assets/icons/UserIcon.svelte';
 
 	import { showMessage } from '../../stores/messageStore';
 
 	import { withLoader } from '$lib/loader';
+	import { apiFacade } from '$lib/apiFacade';
 
 	let newUsername = '';
 
@@ -20,7 +19,7 @@
 			return;
 		}
 
-		const result = await withLoader(updateUser(newUsername));
+		const result = await withLoader(apiFacade.updateUsername(newUsername));
 
 		if (result.success) {
 			showMessage('success', 'Имя пользователя успешно обновлено!');

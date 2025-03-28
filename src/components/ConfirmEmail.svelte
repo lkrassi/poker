@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { confirmEmail } from '../api/email/confirmEmail';
 	import { emailStore } from '../stores/emailStore';
 	import { showMessage } from '../stores/messageStore';
 
+	import { apiFacade } from '$lib/apiFacade';
 	import { withLoader } from '$lib/loader';
+
 	import { goto } from '$app/navigation';
 	import { tick } from 'svelte';
 
@@ -51,7 +52,7 @@
 			return;
 		}
 
-		const result = await withLoader(confirmEmail(email, code));
+		const result = await withLoader(apiFacade.confirmEmail(email, code));
 
 		if (result.success) {
 			showMessage('success', 'Email подтвержден успешно!');

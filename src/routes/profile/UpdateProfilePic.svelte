@@ -1,10 +1,8 @@
 <script lang="ts">
-	import { updateProfilePic } from '../../api/user/updateProfilePic';
-	import { getUserByUsername } from '../../api/user/getUserByUsername';
-
 	import { showMessage } from '../../stores/messageStore';
 
 	import { withLoader } from '$lib/loader';
+	import { apiFacade } from '$lib/apiFacade';
 
 	let selectedFile: File | null = null;
 	let imagePreviewUrl: string | null = null;
@@ -52,9 +50,9 @@
 		}
 
 		try {
-			const response = await withLoader(updateProfilePic(selectedFile));
+			const response = await withLoader(apiFacade.updateProfilePic(selectedFile));
 			if (response.success) {
-				await getUserByUsername();
+				await apiFacade.getUserByUsername();
 				showMessage('success', response.message);
 				imagePreviewUrl = null;
 				selectedFile = null;

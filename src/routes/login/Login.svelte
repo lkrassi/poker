@@ -1,16 +1,15 @@
 <script lang="ts">
-	import { loginUser } from '../../api/auth/login';
-
 	import ConfirmEmail from '../../components/ConfirmEmail.svelte';
 
 	import EmailIcon from '../../assets/icons/EmailIcon.svelte';
 	import PasswordIcon from '../../assets/icons/PasswordIcon.svelte';
 
+	import { withLoader } from '$lib/loader';
+	import { apiFacade } from '$lib/apiFacade';
+
 	import { emailStore } from '../../stores/emailStore';
 	import { showMessage } from '../../stores/messageStore';
 	import { openModal } from '../../stores/modalStore';
-
-	import { withLoader } from '$lib/loader';
 
 	import { goto } from '$app/navigation';
 
@@ -18,7 +17,7 @@
 	let password: string = '';
 
 	const handleSubmit = async (): Promise<void> => {
-		const result = await withLoader(loginUser(email, password));
+		const result = await withLoader(apiFacade.loginUser(email, password));
 
 		if (result.success) {
 			showMessage('success', 'Вы успешно вошли в аккаунт!');

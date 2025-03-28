@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { claimDailyReward } from '../../api/user/dailyReward';
-	import { getUserByUsername } from '../../api/user/getUserByUsername';
-
 	import { showMessage } from '../../stores/messageStore';
+
 	import { withLoader } from '$lib/loader';
+	import { apiFacade } from '$lib/apiFacade';
 
 	import { onMount } from 'svelte';
 
@@ -77,7 +76,7 @@
 		rewardAmount = null;
 
 		try {
-			const result = await withLoader(claimDailyReward());
+			const result = await withLoader(apiFacade.claimDailyReward());
 
 			if (!result.success) {
 				showMessage('error', result.message || 'Ошибка при получении награды');
@@ -103,7 +102,7 @@
 					isLock = false;
 					showMessage('success', `Поздравляем! Вам добавлено фишек в размере: ${rewardAmount}`);
 
-					const userResult = await getUserByUsername();
+					const userResult = await apiFacade.getUserByUsername();
 					if (!userResult.success) {
 						showMessage('error', userResult.message || 'Ошибка при обновлении данных пользователя');
 					}
@@ -250,6 +249,7 @@
 		.wheel-of-fortune {
 			width: 12rem;
 			height: 12rem;
+			margin: 0 0 4rem;
 
 			&__label-text {
 				padding-left: 3rem;

@@ -1,4 +1,4 @@
-import { refreshToken } from '../api/auth/refresh';
+import { apiFacade } from '$lib/apiFacade';
 
 const fetchWithRefresh = async (url: string, options: RequestInit): Promise<Response> => {
 	let res = await fetch(url, options);
@@ -8,7 +8,7 @@ const fetchWithRefresh = async (url: string, options: RequestInit): Promise<Resp
 		const accessTokenValue = localStorage.getItem('access_token');
 
 		if (refreshTokenValue && accessTokenValue) {
-			const refreshResponse = await refreshToken(accessTokenValue, refreshTokenValue);
+			const refreshResponse = await apiFacade.refreshToken(accessTokenValue, refreshTokenValue);
 
 			if (refreshResponse.success) {
 				options.headers = {

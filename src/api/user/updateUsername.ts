@@ -2,7 +2,7 @@ import { setUser, userStore } from '../../stores/userStore';
 import { get } from 'svelte/store';
 import fetchWithRefresh from '$lib/fetchWithRefresh';
 
-export const updateUser = async (newUsername: string) => {
+export const updateUsername = async (newUsername: string) => {
 	try {
 		const BASE_URL = import.meta.env.VITE_BASE_URL;
 		const { user } = get(userStore);

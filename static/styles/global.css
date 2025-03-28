@@ -45,6 +45,7 @@ button {
 	outline: none;
 	border-radius: 15px;
 	cursor: pointer;
+	background: none;
 }
 
 p {

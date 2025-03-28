@@ -1,24 +1,23 @@
 <script lang="ts">
-	import { registerUser } from '../../api/auth/register';
-
 	import ConfirmEmail from '../../components/ConfirmEmail.svelte';
 
 	import UserIcon from '../../assets/icons/UserIcon.svelte';
 	import EmailIcon from '../../assets/icons/EmailIcon.svelte';
 	import PasswordIcon from '../../assets/icons/PasswordIcon.svelte';
 
+	import { withLoader } from '$lib/loader';
+	import { apiFacade } from '$lib/apiFacade';
+
 	import { emailStore } from '../../stores/emailStore';
 	import { showMessage } from '../../stores/messageStore';
 	import { openModal } from '../../stores/modalStore';
-
-	import { withLoader } from '$lib/loader';
 
 	let username: string = '';
 	let email: string = '';
 	let password: string = '';
 
 	const handleSubmit = async (): Promise<void> => {
-		const result = await withLoader(registerUser(username, email, password));
+		const result = await withLoader(apiFacade.registerUser(username, email, password));
 
 		if (result.success) {
 			showMessage('success', 'Теперь код подтверждения будет отправлен на ваш email!');

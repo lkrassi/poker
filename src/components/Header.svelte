@@ -113,6 +113,7 @@
 
 		.header__burger {
 			display: flex;
+			margin: 2rem 0;
 		}
 
 		.header__navbar {
@@ -120,7 +121,7 @@
 			flex-direction: column;
 			align-items: center;
 			position: absolute;
-			top: 1rem;
+			top: 2rem;
 			background: transparent;
 			width: 100%;
 			padding: 1rem 0;
