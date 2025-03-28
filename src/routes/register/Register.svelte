@@ -116,7 +116,6 @@
 				padding-left: 40px;
 				border: 1px solid var(--border-color);
 				border-radius: 15px;
-				font-size: 16px;
 				color: var(--text-color);
 				background: transparent;
 				transition: 0.3s ease;
