@@ -5,8 +5,16 @@
 
 	import Message from '../components/Message.svelte';
 	import Loader from '../components/Loader.svelte';
+	import Modal from '../components/Modal.svelte';
 
 	import { isLoading } from '../stores/loaderStore';
+	import { modalStore, type ModalState } from '../stores/modalStore';
+
+	let modalState: ModalState;
+
+	modalStore.subscribe((state) => {
+		modalState = state;
+	});
 
 	function checkAuth(path = window.location.pathname) {
 		const protectedRoutes = ['/search-lobby', '/profile', '/create-lobby'];
@@ -37,6 +45,16 @@
 
 {#if $isLoading}
 	<Loader />
+{/if}
+
+{#if modalState.isOpen}
+	<Modal
+		title={modalState.props.title}
+		onClose={modalState.props.onClose}
+		containerClass={modalState.props.containerClass}
+	>
+		<svelte:component this={modalState.component} {...modalState.props} />
+	</Modal>
 {/if}
 
 <slot />

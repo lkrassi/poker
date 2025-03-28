@@ -9,13 +9,13 @@
 
 	import { emailStore } from '../../stores/emailStore';
 	import { showMessage } from '../../stores/messageStore';
+	import { openModal } from '../../stores/modalStore';
 
 	import { withLoader } from '$lib/loader';
 
 	let username: string = '';
 	let email: string = '';
 	let password: string = '';
-	let showConfirmEmail: boolean = false;
 
 	const handleSubmit = async (): Promise<void> => {
 		const result = await withLoader(registerUser(username, email, password));
@@ -23,16 +23,16 @@
 		if (result.success) {
 			showMessage('success', 'Теперь код подтверждения будет отправлен на ваш email!');
 			emailStore.set(email);
-			showConfirmEmail = true;
+
+			openModal(ConfirmEmail, {
+				title: 'Подтверждение Email',
+				containerClass: 'confirm-email-modal'
+			});
 		} else {
 			showMessage('error', result.message || 'Ошибка регистрации');
 		}
 	};
 </script>
-
-{#if showConfirmEmail}
-	<ConfirmEmail on:close={() => (showConfirmEmail = false)} />
-{/if}
 
 <section class="register-container">
 	<form class="register-form" on:submit|preventDefault={handleSubmit}>

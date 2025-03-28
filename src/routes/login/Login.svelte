@@ -8,6 +8,7 @@
 
 	import { emailStore } from '../../stores/emailStore';
 	import { showMessage } from '../../stores/messageStore';
+	import { openModal } from '../../stores/modalStore';
 
 	import { withLoader } from '$lib/loader';
 
@@ -15,7 +16,6 @@
 
 	let email: string = '';
 	let password: string = '';
-	let showConfirmEmail: boolean = false;
 
 	const handleSubmit = async (): Promise<void> => {
 		const result = await withLoader(loginUser(email, password));
@@ -27,11 +27,11 @@
 			if (result.message === 'Email не подтвержден') {
 				showMessage('error', 'Email не подтвержден');
 				emailStore.set(email);
-				showConfirmEmail = true;
 
-				setTimeout(() => {
-					showMessage('info', 'Код подтверждения отправлен на ваш email!');
-				}, 100);
+				openModal(ConfirmEmail, {
+					title: 'Подтверждение Email',
+					containerClass: 'confirm-email-modal'
+				});
 			} else {
 				showMessage('error', result.message);
 			}
@@ -69,10 +69,6 @@
 		<p class="login-form__no-acc">Ещё нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
 	</form>
 </section>
-
-{#if showConfirmEmail}
-	<ConfirmEmail />
-{/if}
 
 <style lang="scss">
 	.login-container {

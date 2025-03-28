@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { confirmEmail } from '../api/email/confirmEmail';
-	import Modal from './Modal.svelte';
-
 	import { emailStore } from '../stores/emailStore';
 	import { showMessage } from '../stores/messageStore';
 
@@ -12,7 +10,6 @@
 	let codes = Array(6).fill('');
 	let inputs: HTMLInputElement[] = [];
 	let email: string;
-	let isModalOpen = true;
 
 	emailStore.subscribe((value) => (email = value));
 
@@ -63,92 +60,77 @@
 			showMessage('error', result.message || 'Ошибка подтверждения');
 		}
 	};
-
-	function closeModal() {
-		isModalOpen = false;
-	}
 </script>
 
-{#if isModalOpen}
-	<Modal
-		title="КОД С ПОЧТЫ"
-		onClose={closeModal}
-		closable={false}
-		containerClass="confirm-email-modal"
-	>
-		<form on:submit|preventDefault={handleConfirm}>
-			<div class="confirm-email-modal__code-inputs">
-				{#each codes as _, index}
-					<input
-						type="tel"
-						class="confirm-email-modal__code-input"
-						name="code-{index}"
-						maxlength="1"
-						bind:value={codes[index]}
-						on:input={(e) => handleInput(index, e)}
-						on:keydown={(e) => handleKeyDown(index, e)}
-						on:paste={handlePaste}
-						bind:this={inputs[index]}
-					/>
-				{/each}
-			</div>
-			<button type="submit" class="confirm-email-modal__submit-btn">Подтвердить</button>
-		</form>
-	</Modal>
-{/if}
+<form on:submit|preventDefault={handleConfirm}>
+	<div class="code-inputs">
+		{#each codes as _, index}
+			<input
+				type="tel"
+				class="code-input"
+				name="code-{index}"
+				maxlength="1"
+				bind:value={codes[index]}
+				on:input={(e) => handleInput(index, e)}
+				on:keydown={(e) => handleKeyDown(index, e)}
+				on:paste={handlePaste}
+				bind:this={inputs[index]}
+			/>
+		{/each}
+	</div>
+	<button type="submit" class="submit-btn">Подтвердить</button>
+</form>
 
 <style lang="scss">
-	.confirm-email-modal {
-		&__code-inputs {
-			display: flex;
-			justify-content: center;
-			flex-wrap: wrap;
-			gap: 10px;
-			margin-bottom: 20px;
-		}
+	:global(.confirm-email-modal) {
+		transform: translateY(-10rem);
+	}
 
-		&__code-input {
-			width: 40px;
-			height: 40px;
-			text-align: center;
-			font-size: 18px;
-			border: 1px solid var(--border-color);
-			color: var(--text-color);
-			background: transparent;
-			transition: 0.3s ease;
-			border-radius: 10px;
+	.code-inputs {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 10px;
+		margin-bottom: 20px;
+	}
 
-			&:focus {
-				border-color: var(--text-color);
-				outline: none;
-				box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.4);
-			}
-		}
+	.code-input {
+		width: 40px;
+		height: 40px;
+		text-align: center;
+		font-size: 18px;
+		border: 1px solid var(--border-color);
+		color: var(--text-color);
+		background: transparent;
+		transition: 0.3s ease;
+		border-radius: 10px;
 
-		&__submit-btn {
-			width: 100%;
-			padding: 10px;
-			background-color: var(--primary-color);
-			color: #fff;
-			border: none;
-			border-radius: 20px;
-			cursor: pointer;
-			transition:
-				background-color 0.3s ease,
-				transform 0.1s ease;
-
-			&:hover,
-			&:focus {
-				background-color: var(--primary-color-hover);
-			}
-
-			&:active {
-				transform: scale(0.98);
-			}
+		&:focus {
+			border-color: var(--text-color);
+			outline: none;
+			box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.4);
 		}
 	}
 
-	:global(.confirm-email-modal) {
-		transform: translateY(-10rem);
+	.submit-btn {
+		width: 100%;
+		padding: 10px;
+		background-color: var(--primary-color);
+		color: #fff;
+		border: none;
+		border-radius: 20px;
+		cursor: pointer;
+		transition:
+			background-color 0.3s ease,
+			transform 0.1s ease;
+
+		&:hover,
+		&:focus {
+			background-color: var(--primary-color-hover);
+		}
+
+		&:active {
+			transform: scale(0.99);
+		}
 	}
 </style>

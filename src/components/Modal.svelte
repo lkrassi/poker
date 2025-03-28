@@ -39,15 +39,15 @@
 		window.scrollTo(0, scrollY);
 	};
 
-	onMount(() => {
+	onMount(async () => {
 		lockScroll();
 		document.addEventListener('keydown', handleKeyDown);
 
 		if (modalRef) {
 			trap = createFocusTrap(modalRef, {
 				allowOutsideClick: true,
-				escapeDeactivates: closable,
-				clickOutsideDeactivates: closable,
+				clickOutsideDeactivates: false,
+				escapeDeactivates: false,
 				fallbackFocus: modalRef,
 				initialFocus: modalRef,
 				returnFocusOnDeactivate: true
@@ -55,7 +55,6 @@
 			trap.activate();
 		}
 	});
-
 	onDestroy(() => {
 		unlockScroll();
 		document.removeEventListener('keydown', handleKeyDown);
@@ -66,7 +65,7 @@
 	});
 </script>
 
-<div class="modal-overlay" on:click={handleClickOutside}>
+<button class="modal-overlay" on:click={handleClickOutside}>
 	<div
 		class="modal-container {containerClass}"
 		bind:this={modalRef}
@@ -81,7 +80,7 @@
 			<slot />
 		</div>
 	</div>
-</div>
+</button>
 
 <style lang="scss">
 	.modal-overlay {
@@ -122,7 +121,8 @@
 			&__title {
 				margin: 0;
 				color: var(--text-color);
-				font-size: 1.5rem;
+				font-size: 2rem;
+				text-align: center;
 			}
 
 			&__body {

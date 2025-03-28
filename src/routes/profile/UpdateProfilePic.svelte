@@ -111,7 +111,6 @@
 
 <style lang="scss">
 	.update-profile-pic {
-		margin: 0 0 2rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -120,6 +119,7 @@
 		&__title {
 			font-size: 2.2rem;
 			color: var(--text-color);
+			text-align: center;
 		}
 
 		&__file-wrapper {

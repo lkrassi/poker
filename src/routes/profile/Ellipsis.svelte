@@ -1,34 +1,19 @@
 <script lang="ts">
-	import Modal from '../../components/Modal.svelte';
-
-	import UpdateProfilePic from './UpdateProfilePic.svelte';
+	import { openModal, closeModal } from '../../stores/modalStore';
 	import UpdateUser from './UpdateUser.svelte';
 
-	let isModalOpen = false;
-
-	const openModal = () => {
-		isModalOpen = true;
-	};
-
-	const closeModal = () => {
-		isModalOpen = false;
+	const openProfileModal = () => {
+		openModal(UpdateUser, { title: '', onClose: closeModal });
 	};
 </script>
 
-<button class="vertical-dots" on:click={openModal} aria-label="Открыть меню">
+<button class="vertical-dots" on:click={openProfileModal} aria-label="Открыть меню">
 	<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<circle cx="12" cy="6" r="2" fill="var(--text-color)" />
 		<circle cx="12" cy="12" r="2" fill="var(--text-color)" />
 		<circle cx="12" cy="18" r="2" fill="var(--text-color)" />
 	</svg>
 </button>
-
-{#if isModalOpen}
-	<Modal title="" onClose={closeModal}>
-		<UpdateProfilePic />
-		<UpdateUser />
-	</Modal>
-{/if}
 
 <style lang="scss">
 	.vertical-dots {
