@@ -10,14 +10,16 @@ import { refreshToken } from '../api/auth/refresh';
 import { sendConfirmationCode } from '../api/email/sendCode';
 import { confirmEmail } from '../api/email/confirmEmail';
 
+import { withLoader } from '$lib/loader';
+
 export const apiFacade = {
-	claimDailyReward,
+	claimDailyReward: () => withLoader(claimDailyReward()),
+	updateUsername: (username: string) => withLoader(updateUsername(username)),
+	updateProfilePic: (profilePic: File) => withLoader(updateProfilePic(profilePic)),
+	confirmEmail: (email: string, code: string) => withLoader(confirmEmail(email, code)),
 	getUserByUsername,
-	updateUsername,
-	updateProfilePic,
 	loginUser,
 	registerUser,
 	refreshToken,
-	sendConfirmationCode,
-	confirmEmail
+	sendConfirmationCode
 };

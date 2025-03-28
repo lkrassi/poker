@@ -3,7 +3,6 @@
 
 	import { showMessage } from '../../stores/messageStore';
 
-	import { withLoader } from '$lib/loader';
 	import { apiFacade } from '$lib/apiFacade';
 
 	let newUsername = '';
@@ -19,7 +18,7 @@
 			return;
 		}
 
-		const result = await withLoader(apiFacade.updateUsername(newUsername));
+		const result = await apiFacade.updateUsername(newUsername);
 
 		if (result.success) {
 			showMessage('success', 'Имя пользователя успешно обновлено!');

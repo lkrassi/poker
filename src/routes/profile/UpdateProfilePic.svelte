@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { showMessage } from '../../stores/messageStore';
 
-	import { withLoader } from '$lib/loader';
 	import { apiFacade } from '$lib/apiFacade';
 
 	let selectedFile: File | null = null;
@@ -50,7 +49,7 @@
 		}
 
 		try {
-			const response = await withLoader(apiFacade.updateProfilePic(selectedFile));
+			const response = await apiFacade.updateProfilePic(selectedFile);
 			if (response.success) {
 				await apiFacade.getUserByUsername();
 				showMessage('success', response.message);

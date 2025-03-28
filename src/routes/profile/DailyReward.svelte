@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { showMessage } from '../../stores/messageStore';
 
-	import { withLoader } from '$lib/loader';
 	import { apiFacade } from '$lib/apiFacade';
 
 	import { onMount } from 'svelte';
@@ -76,7 +75,7 @@
 		rewardAmount = null;
 
 		try {
-			const result = await withLoader(apiFacade.claimDailyReward());
+			const result = await apiFacade.claimDailyReward();
 
 			if (!result.success) {
 				showMessage('error', result.message || 'Ошибка при получении награды');
