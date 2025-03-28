@@ -23,7 +23,6 @@ form {
 	flex-direction: column;
 	gap: 10px;
 	width: 100%;
-	max-width: 400px;
 	margin: 0 auto;
 }
 
@@ -35,6 +34,10 @@ select {
 	border-radius: 4px;
 	font-size: 16px;
 	color: var(--text-color);
+}
+
+input::placeholder {
+	font-size: 1rem;
 }
 
 button {
