@@ -10,6 +10,9 @@ import { refreshToken } from '../api/auth/refresh';
 import { sendConfirmationCode } from '../api/email/sendCode';
 import { confirmEmail } from '../api/email/confirmEmail';
 
+import { createLobby } from '../api/lobby/createLobby';
+import { getAllLobbies } from '../api/lobby/getAllLobbies';
+
 import { withLoader } from '$lib/loader';
 
 export const apiFacade = {
@@ -18,6 +21,14 @@ export const apiFacade = {
 	updateProfilePic: (profilePic: File) => withLoader(updateProfilePic(profilePic)),
 	confirmEmail: (email: string, code: string) => withLoader(confirmEmail(email, code)),
 	getUserByUsername,
+	createLobby: (lobbyData: {
+		ante: number;
+		blind_increase_time: string;
+		cache_game: boolean;
+		max_players: number;
+		small_blind: number;
+	}) => withLoader(createLobby(lobbyData)),
+	getAllLobbies: (page: number) => withLoader(getAllLobbies(page)),
 	loginUser,
 	registerUser,
 	refreshToken,

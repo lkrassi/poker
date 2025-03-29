@@ -10,7 +10,6 @@ interface User {
 
 interface UserStore {
 	user: User | null;
-	isLoading: boolean;
 	error: string | null;
 }
 
@@ -18,7 +17,6 @@ const isBrowser = typeof window !== 'undefined';
 
 const initialState: UserStore = {
 	user: isBrowser ? JSON.parse(localStorage.getItem('user') || 'null') : null,
-	isLoading: false,
 	error: null
 };
 
@@ -28,7 +26,13 @@ export const setUser = (user: User) => {
 	if (isBrowser) {
 		localStorage.setItem('user', JSON.stringify(user));
 	}
-	userStore.update((state) => ({ ...state, user, isLoading: false, error: null }));
+	userStore.update((state) => {
+		const updatedUser = {
+			...user,
+			profile_picture_url: `${user.profile_picture_url}?t=${Date.now()}`
+		};
+		return { ...state, user: updatedUser, error: null };
+	});
 };
 
 export const clearUser = () => {

@@ -1,5 +1,5 @@
 import { get } from 'svelte/store';
-import { userStore } from '../../stores/userStore';
+import { userStore, setUser } from '../../stores/userStore';
 import fetchWithRefresh from '$lib/fetchWithRefresh';
 
 export const updateProfilePic = async (file: File) => {
@@ -35,9 +35,12 @@ export const updateProfilePic = async (file: File) => {
 		});
 
 		if (res.status === 204) {
+			setUser({
+				...user,
+				profile_picture_url: `${user.profile_picture_url}?t=${Date.now()}`
+			});
 			return { success: true, message: 'Аватар успешно обновлён' };
 		}
-
 		if (res.status === 400) {
 			return { success: false, message: 'Невозможно открыть файл' };
 		}
