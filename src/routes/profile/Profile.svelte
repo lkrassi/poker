@@ -106,11 +106,6 @@
 			flex-direction: column;
 			align-items: center;
 			text-align: center;
-			background: transparent;
-			backdrop-filter: blur(10px);
-			padding: 5rem;
-			border-radius: 15px;
-			box-shadow: 0 4px 10px var(--box-shadow-color);
 		}
 
 		&__img-actions {

@@ -4,6 +4,8 @@
 
 	import { apiFacade } from '$lib/apiFacade';
 
+	import { closeModal } from '../stores/modalStore';
+
 	import { goto } from '$app/navigation';
 	import { tick } from 'svelte';
 
@@ -55,6 +57,7 @@
 
 		if (result.success) {
 			showMessage('success', 'Email подтвержден успешно!');
+			closeModal();
 			goto('/login');
 		} else {
 			showMessage('error', result.message || 'Ошибка подтверждения');
