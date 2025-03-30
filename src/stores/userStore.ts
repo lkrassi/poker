@@ -26,18 +26,12 @@ export const setUser = (user: User) => {
 	if (isBrowser) {
 		localStorage.setItem('user', JSON.stringify(user));
 	}
-	userStore.update((state) => {
-		const updatedUser = {
-			...user,
-			profile_picture_url: `${user.profile_picture_url}?t=${Date.now()}`
-		};
-		return { ...state, user: updatedUser, error: null };
-	});
+	userStore.update((state) => ({ ...state, user, error: null }));
 };
 
 export const clearUser = () => {
 	if (isBrowser) {
 		localStorage.removeItem('user');
 	}
-	userStore.update((state) => ({ ...state, user: null, isLoading: false, error: null }));
+	userStore.update((state) => ({ ...state, user: null, error: null }));
 };

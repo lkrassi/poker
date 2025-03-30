@@ -16,19 +16,23 @@
 	let isImageModalOpen: boolean = false;
 
 	onMount(async () => {
-		const storedUser = localStorage.getItem('user');
-		if (storedUser) {
-			setUser(JSON.parse(storedUser));
-		} else {
-			await apiFacade.getUserByUsername();
-		}
+		try {
+			const response = await apiFacade.getUserByUsername();
 
-		if (!$userStore.user) {
+			if (response.success && response.user) {
+				setUser(response.user);
+			} else {
+				goto('/login');
+				showMessage(
+					'error',
+					response.message || 'Для доступа к этой странице необходимо войти в аккаунт'
+				);
+			}
+		} catch (error) {
 			goto('/login');
-			showMessage('error', 'Для доступа к этой странице необходимо войти в аккаунт');
+			showMessage('error', 'Ошибка при загрузке данных пользователя');
 		}
 	});
-
 	const handleKeyDown = (event: KeyboardEvent) => {
 		if (event.key === 'Escape') {
 			closeImageModal();
@@ -83,7 +87,7 @@
 	<button class="modal-overlay" on:click={closeImageModal}>
 		<div class="modal-content">
 			<img
-				src={`https://${$userStore.user.profile_picture_url}`}
+				src={`https://${$userStore.user?.profile_picture_url}`}
 				alt="Аватарка пользователя в полном размере"
 				class="modal-image"
 			/>

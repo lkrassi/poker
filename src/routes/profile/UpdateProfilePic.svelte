@@ -52,7 +52,6 @@
 			const response = await apiFacade.updateProfilePic(selectedFile);
 			if (response.success) {
 				showMessage('success', response.message);
-				await apiFacade.getUserByUsername();
 				imagePreviewUrl = null;
 				selectedFile = null;
 				fileInput.value = '';

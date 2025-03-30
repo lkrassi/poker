@@ -1,15 +1,9 @@
-import { get } from 'svelte/store';
-import { userStore, setUser } from '../../stores/userStore';
+import { getUserByUsername } from './getUserByUsername';
 import fetchWithRefresh from '$lib/fetchWithRefresh';
 
 export const updateProfilePic = async (file: File) => {
 	try {
 		const BASE_URL = import.meta.env.VITE_BASE_URL;
-		const { user } = get(userStore);
-
-		if (!user) {
-			return { success: false, message: 'Пользователь не авторизован' };
-		}
 
 		if (!file) {
 			return { success: false, message: 'Файл не выбран' };
@@ -36,7 +30,12 @@ export const updateProfilePic = async (file: File) => {
 
 		switch (res.status) {
 			case 204:
-				return { success: true, message: 'Аватар успешно обновлён' };
+				const userUpdateResponse = await getUserByUsername();
+				if (userUpdateResponse.success) {
+					return { success: true, message: 'Аватар успешно обновлён' };
+				} else {
+					return { success: false, message: 'Не удалось обновить данные пользователя' };
+				}
 			case 400:
 				return { success: false, message: 'Невозможно открыть файл' };
 			case 401:

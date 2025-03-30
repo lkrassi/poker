@@ -13,11 +13,6 @@
 			return;
 		}
 
-		if (newUsername.length < 4) {
-			showMessage('error', 'Имя пользователя может содержать от 4 до 32 символов');
-			return;
-		}
-
 		const result = await apiFacade.updateUsername(newUsername);
 
 		if (result.success) {

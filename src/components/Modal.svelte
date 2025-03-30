@@ -115,7 +115,6 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				margin-bottom: 1.25rem;
 			}
 
 			&__title {
