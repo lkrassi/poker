@@ -1,24 +1,23 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount, onDestroy, tick } from 'svelte';
+	import { fade, fly } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 	import { createFocusTrap } from 'focus-trap';
+	import type { FocusTrap } from 'focus-trap';
 
 	export let title: string = '';
 	export let onClose: () => void;
 	export let closable: boolean = true;
 	export let containerClass: string = '';
+	export let animationDuration: number = 200;
 
 	let modalRef: HTMLDivElement | null = null;
-	let trap: any;
+	let focusTrap: FocusTrap | null = null;
 	let scrollY = 0;
+	let isVisible = false;
 
 	const handleClickOutside = (event: MouseEvent) => {
 		if (closable && event.target === modalRef?.parentElement) {
-			onClose();
-		}
-	};
-
-	const handleKeyDown = (event: KeyboardEvent) => {
-		if (closable && event.key === 'Escape') {
 			onClose();
 		}
 	};
@@ -40,47 +39,55 @@
 	};
 
 	onMount(async () => {
+		isVisible = true;
 		lockScroll();
-		document.addEventListener('keydown', handleKeyDown);
+
+		await tick();
 
 		if (modalRef) {
-			trap = createFocusTrap(modalRef, {
-				allowOutsideClick: true,
-				clickOutsideDeactivates: false,
-				escapeDeactivates: false,
-				fallbackFocus: modalRef,
-				initialFocus: modalRef,
-				returnFocusOnDeactivate: true
+			focusTrap = createFocusTrap(modalRef, {
+				escapeDeactivates: closable,
+				clickOutsideDeactivates: closable,
+				onDeactivate: () => {
+					if (closable) onClose();
+				}
 			});
-			trap.activate();
+			focusTrap.activate();
 		}
 	});
+
 	onDestroy(() => {
 		unlockScroll();
-		document.removeEventListener('keydown', handleKeyDown);
-
-		if (trap) {
-			trap.deactivate();
+		if (focusTrap) {
+			focusTrap.deactivate();
 		}
 	});
 </script>
 
-<button class="modal-overlay" on:click={handleClickOutside}>
-	<div
-		class="modal-container {containerClass}"
-		bind:this={modalRef}
-		role="dialog"
-		aria-modal="true"
-		aria-labelledby="modal-title"
+{#if isVisible}
+	<button
+		class="modal-overlay"
+		on:click={handleClickOutside}
+		transition:fade={{ duration: animationDuration }}
 	>
-		<div class="modal-container__header">
-			<h2 class="modal-container__title">{title}</h2>
+		<div
+			class="modal-container {containerClass}"
+			bind:this={modalRef}
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="modal-title"
+			in:fly={{ y: 50, duration: animationDuration, easing: quintOut }}
+			out:fade={{ duration: animationDuration }}
+		>
+			<div class="modal-container__header">
+				<h2 id="modal-title" class="modal-container__title">{title}</h2>
+			</div>
+			<div class="modal-container__body">
+				<slot />
+			</div>
 		</div>
-		<div class="modal-container__body">
-			<slot />
-		</div>
-	</div>
-</button>
+	</button>
+{/if}
 
 <style lang="scss">
 	.modal-overlay {
@@ -97,27 +104,34 @@
 		overflow-y: auto;
 		overscroll-behavior: contain;
 		min-height: 100vh;
+		border: none;
+		cursor: default;
+		padding: 0;
+		margin: 0;
 
 		.modal-container {
-			padding: 1.5rem;
+			padding: 2rem;
 			width: min(90vw, 31.25rem);
-			max-height: calc(100vh - 2rem);
+			max-height: calc(100vh - 4rem);
 			overflow: auto;
 			display: flex;
 			flex-direction: column;
 			outline: none;
+			will-change: transform, opacity;
 
 			&__header {
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				margin-bottom: 1.5rem;
 			}
 
 			&__title {
 				margin: 0;
 				color: var(--text-color);
-				font-size: 2rem;
+				font-size: 1.8rem;
 				text-align: center;
+				font-weight: 600;
 			}
 
 			&__body {
@@ -125,6 +139,14 @@
 				flex-direction: column;
 				align-items: center;
 				color: var(--text-color);
+			}
+		}
+
+		@media (max-width: 576px) {
+			.modal-container {
+				padding: 1.5rem;
+				width: 95vw;
+				max-height: calc(100vh - 2rem);
 			}
 		}
 	}

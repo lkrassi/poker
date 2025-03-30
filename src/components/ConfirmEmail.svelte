@@ -87,6 +87,11 @@
 <style lang="scss">
 	:global(.confirm-email-modal) {
 		transform: translateY(-10rem);
+		backdrop-filter: blur(10px);
+		padding: 1.5rem;
+		border-radius: 1.25rem;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		box-shadow: 0 0.25rem 0.625rem var(--box-shadow-color);
 	}
 
 	.code-inputs {

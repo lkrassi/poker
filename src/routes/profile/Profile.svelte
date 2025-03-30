@@ -3,6 +3,7 @@
 	import Logout from './Logout.svelte';
 	import DailyReward from './DailyReward.svelte';
 	import UpdateUsername from './UpdateUsername.svelte';
+	import ImageModal from './ImageModal.svelte';
 
 	import ChipsIcon from '../../assets/icons/ChipsIcon.svelte';
 
@@ -14,8 +15,6 @@
 
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-
-	let isImageModalOpen: boolean = false;
 
 	onMount(async () => {
 		try {
@@ -35,20 +34,13 @@
 			showMessage('error', 'Ошибка при загрузке данных пользователя');
 		}
 	});
-	const handleKeyDown = (event: KeyboardEvent) => {
-		if (event.key === 'Escape') {
-			closeImageModal();
-		}
-	};
 
 	const openImageModal = () => {
-		isImageModalOpen = true;
-		window.addEventListener('keydown', handleKeyDown);
-	};
-
-	const closeImageModal = () => {
-		isImageModalOpen = false;
-		window.removeEventListener('keydown', handleKeyDown);
+		openModal(ImageModal, {
+			imageUrl: `https://${$userStore.user?.profile_picture_url}`,
+			altText: 'Аватарка пользователя в полном размере',
+			onClose: closeModal
+		});
 	};
 
 	const openUpdateUsernameModal = () => {
@@ -58,12 +50,6 @@
 			containerClass: 'update-user-modal'
 		});
 	};
-
-	onMount(() => {
-		return () => {
-			window.removeEventListener('keydown', handleKeyDown);
-		};
-	});
 </script>
 
 {#if $userStore.user}
@@ -91,18 +77,6 @@
 
 		<DailyReward />
 	</div>
-{/if}
-
-{#if isImageModalOpen && $userStore.user}
-	<button class="modal-overlay" on:click={closeImageModal}>
-		<div class="modal-content">
-			<img
-				src={`https://${$userStore.user?.profile_picture_url}`}
-				alt="Аватарка пользователя в полном размере"
-				class="modal-image"
-			/>
-		</div>
-	</button>
 {/if}
 
 <style lang="scss">
@@ -181,29 +155,6 @@
 		}
 	}
 
-	.modal-overlay {
-		border-radius: 0;
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: var(--modal-overlay-color);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		z-index: 3;
-
-		.modal-content {
-			.modal-image {
-				width: 70%;
-				height: 35rem;
-				border-radius: 10%;
-				object-fit: cover;
-			}
-		}
-	}
-
 	@media (min-width: 576px) and (max-width: 991.98px) {
 		.profile {
 			flex-wrap: wrap;
@@ -222,17 +173,6 @@
 
 				.profile__username {
 					font-size: 2.5rem;
-				}
-			}
-		}
-
-		.modal-overlay {
-			.modal-content {
-				.modal-image {
-					width: 90%;
-					height: 20rem;
-					border-radius: 10%;
-					object-fit: cover;
 				}
 			}
 		}

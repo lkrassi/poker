@@ -21,7 +21,6 @@ body {
 form {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
 	width: 100%;
 	margin: 0 auto;
 }
@@ -38,6 +37,7 @@ select {
 
 input::placeholder {
 	font-size: 1rem;
+	opacity: 0.7;
 }
 
 button {

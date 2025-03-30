@@ -70,6 +70,7 @@
 			outline: none;
 			transition: 0.3s ease;
 			text-align: center;
+			padding: 0;
 
 			&::placeholder {
 				color: var(--text-color);
