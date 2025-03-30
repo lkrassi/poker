@@ -5,6 +5,7 @@
 
 <div class="image-modal">
 	<img src={imageUrl} alt={altText} class="modal-image" />
+	<button>заглушка (костылёк)</button>
 </div>
 
 <style lang="scss">
@@ -12,6 +13,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		flex-direction: column;
 
 		.modal-image {
 			width: 90%;

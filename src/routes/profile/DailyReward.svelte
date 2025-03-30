@@ -255,8 +255,8 @@
 
 	@media (max-width: 576px) {
 		.wheel-of-fortune {
-			width: 12rem;
-			height: 12rem;
+			width: 13rem;
+			height: 13rem;
 			margin: 0 0 4rem;
 
 			&__label-text {
@@ -265,8 +265,8 @@
 		}
 
 		.wheel-center {
-			width: 4rem;
-			height: 4rem;
+			width: 5rem;
+			height: 5rem;
 		}
 
 		.wheel-center-button {
