@@ -19,21 +19,18 @@ export const getUserByUsername = async () => {
 			}
 		});
 
-		if (res.status === 200) {
-			const data = await res.json();
-			setUser(data);
-			return { success: true, user: data };
+		switch (res.status) {
+			case 200:
+				const data = await res.json();
+				setUser(data);
+				return { success: true, user: data };
+			case 400:
+				return { success: false, message: 'Имя пользователя не может быть пустым' };
+			case 404:
+				return { success: false, message: 'Пользователь не найден' };
+			default:
+				return { success: false, message: 'Ошибка при получении данных пользователя' };
 		}
-
-		if (res.status === 400) {
-			return { success: false, message: 'Имя пользователя не может быть пустым' };
-		}
-
-		if (res.status === 404) {
-			return { success: false, message: 'Пользователь не найден' };
-		}
-
-		return { success: false, message: 'Ошибка при получении данных пользователя' };
 	} catch (error) {
 		console.error('Ошибка при запросе пользователя:', error);
 		return { success: false, message: 'Ошибка сети, проверьте подключение' };

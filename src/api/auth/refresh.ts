@@ -10,14 +10,14 @@ export const refreshToken = async (accessToken: string, refreshToken: string) =>
 
 		const data = await res.json();
 
-		if (res.status === 201) {
-			localStorage.setItem('access_token', data.access_token);
-			localStorage.setItem('refresh_token', data.refresh_token);
-
-			return { success: true };
+		switch (res.status) {
+			case 201:
+				localStorage.setItem('access_token', data.access_token);
+				localStorage.setItem('refresh_token', data.refresh_token);
+				return { success: true };
+			default:
+				return { success: false, message: 'Ошибка обновления токенов, попробуйте позже' };
 		}
-
-		return { success: false, message: 'Ошибка обновления токенов, попробуйте позже' };
 	} catch (error) {
 		return { success: false, message: 'Ошибка сети, проверьте подключение' };
 	}

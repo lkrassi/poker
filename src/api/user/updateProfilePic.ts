@@ -34,26 +34,19 @@ export const updateProfilePic = async (file: File) => {
 			body: formData
 		});
 
-		if (res.status === 204) {
-			setUser({
-				...user,
-				profile_picture_url: `${user.profile_picture_url}?t=${Date.now()}`
-			});
-			return { success: true, message: 'Аватар успешно обновлён' };
+		switch (res.status) {
+			case 204:
+				setUser(user);
+				return { success: true, message: 'Аватар успешно обновлён' };
+			case 400:
+				return { success: false, message: 'Невозможно открыть файл' };
+			case 401:
+				return { success: false, message: 'Неверный идентификатор пользователя' };
+			case 404:
+				return { success: false, message: 'Пользователь не найден' };
+			default:
+				return { success: false, message: 'Ошибка при обновлении аватара' };
 		}
-		if (res.status === 400) {
-			return { success: false, message: 'Невозможно открыть файл' };
-		}
-
-		if (res.status === 401) {
-			return { success: false, message: 'Неверный идентификатор пользователя' };
-		}
-
-		if (res.status === 404) {
-			return { success: false, message: 'Пользователь не найден' };
-		}
-
-		return { success: false, message: 'Ошибка при обновлении аватара' };
 	} catch (error) {
 		return { success: false, message: 'Ошибка сети, проверьте подключение' };
 	}

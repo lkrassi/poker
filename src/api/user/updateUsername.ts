@@ -24,28 +24,21 @@ export const updateUsername = async (newUsername: string) => {
 			body: JSON.stringify({ username: newUsername })
 		});
 
-		if (res.status === 204) {
-			setUser({ ...user, username: newUsername });
-			return { success: true };
+		switch (res.status) {
+			case 204:
+				setUser({ ...user, username: newUsername });
+				return { success: true };
+			case 400:
+				return { success: false, message: 'Некорректные данные' };
+			case 401:
+				return { success: false, message: 'Неверный идентификатор пользователя' };
+			case 404:
+				return { success: false, message: 'Пользователь не найден' };
+			case 409:
+				return { success: false, message: 'Имя пользователя уже занято' };
+			default:
+				return { success: false, message: 'Ошибка при обновлении данных пользователя' };
 		}
-
-		if (res.status === 400) {
-			return { success: false, message: 'Некорректные данные' };
-		}
-
-		if (res.status === 401) {
-			return { success: false, message: 'Неверный идентификатор пользователя' };
-		}
-
-		if (res.status === 404) {
-			return { success: false, message: 'Пользователь не найден' };
-		}
-
-		if (res.status === 409) {
-			return { success: false, message: 'Имя пользователя уже занято' };
-		}
-
-		return { success: false, message: 'Ошибка при обновлении данных пользователя' };
 	} catch (error) {
 		return { success: false, message: 'Ошибка сети, проверьте подключение' };
 	}
