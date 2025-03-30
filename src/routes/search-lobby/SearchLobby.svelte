@@ -45,7 +45,7 @@
 					<div class="search-lobby__card">
 						<div class="search-lobby__card-header">
 							<h3 class="search-lobby__card-title">
-								{lobby.cache_game ? 'Кэш-игра' : 'Sit&Go Игра'} #{lobby.lobby_id.slice(0, 8)}
+								{lobby.cache_game ? 'Кэш-игра' : 'Sit&Go-игра'} #{lobby.lobby_id.slice(0, 8)}
 							</h3>
 							<div class="search-lobby__players">
 								Игроки: {lobby.current_players_count}/{lobby.max_players}

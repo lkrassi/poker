@@ -106,6 +106,14 @@
 </form>
 
 <style lang="scss">
+	:global(.update-profile-pic-modal) {
+		backdrop-filter: blur(10px);
+		padding: 1.5rem;
+		border-radius: 1.25rem;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		box-shadow: 0 0.25rem 0.625rem var(--box-shadow-color);
+	}
+
 	.update-profile-pic {
 		display: flex;
 		flex-direction: column;

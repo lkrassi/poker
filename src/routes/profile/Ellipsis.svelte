@@ -1,9 +1,14 @@
 <script lang="ts">
+	import UpdateProfilePic from './UpdateProfilePic.svelte';
+
 	import { openModal, closeModal } from '../../stores/modalStore';
-	import UpdateUser from './UpdateUser.svelte';
 
 	const openProfileModal = () => {
-		openModal(UpdateUser, { title: '', onClose: closeModal });
+		openModal(UpdateProfilePic, {
+			title: '',
+			onClose: closeModal,
+			containerClass: 'update-profile-pic-modal'
+		});
 	};
 </script>
 

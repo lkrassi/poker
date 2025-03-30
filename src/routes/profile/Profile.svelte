@@ -2,6 +2,7 @@
 	import Ellipsis from './Ellipsis.svelte';
 	import Logout from './Logout.svelte';
 	import DailyReward from './DailyReward.svelte';
+	import UpdateUsername from './UpdateUsername.svelte';
 
 	import ChipsIcon from '../../assets/icons/ChipsIcon.svelte';
 
@@ -9,6 +10,7 @@
 
 	import { userStore, setUser } from '../../stores/userStore';
 	import { showMessage } from '../../stores/messageStore';
+	import { openModal, closeModal } from '../../stores/modalStore';
 
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
@@ -49,6 +51,14 @@
 		window.removeEventListener('keydown', handleKeyDown);
 	};
 
+	const openUpdateUsernameModal = () => {
+		openModal(UpdateUsername, {
+			title: '',
+			onClose: closeModal,
+			containerClass: 'update-user-modal'
+		});
+	};
+
 	onMount(() => {
 		return () => {
 			window.removeEventListener('keydown', handleKeyDown);
@@ -69,9 +79,9 @@
 				</button>
 				<Ellipsis />
 			</div>
-			<h2 class="profile__username">
+			<button class="profile__username" on:click={openUpdateUsernameModal}>
 				{$userStore.user?.username}
-			</h2>
+			</button>
 			<p class="profile__balance">
 				{$userStore.user?.balance}
 				<span class="profile__icon-wrapper"><ChipsIcon /></span>
@@ -136,8 +146,15 @@
 			font-weight: 600;
 			color: var(--text-color);
 			font-size: 4rem;
-			margin: 0 0 1rem;
+			margin: 1rem 0;
 			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+			padding: 0;
+			transition: 0.3s ease;
+
+			&:hover,
+			&:focus {
+				transform: scale(1.03);
+			}
 		}
 
 		&__balance {

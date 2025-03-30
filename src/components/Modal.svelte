@@ -99,11 +99,7 @@
 		min-height: 100vh;
 
 		.modal-container {
-			backdrop-filter: blur(10px);
 			padding: 1.5rem;
-			border-radius: 1.25rem;
-			border: 1px solid rgba(255, 255, 255, 0.2);
-			box-shadow: 0 0.25rem 0.625rem var(--box-shadow-color);
 			width: min(90vw, 31.25rem);
 			max-height: calc(100vh - 2rem);
 			overflow: auto;
