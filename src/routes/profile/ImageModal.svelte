@@ -14,8 +14,8 @@
 		align-items: center;
 
 		.modal-image {
-			width: 70%;
-			height: auto;
+			width: 90%;
+			height: 20rem;
 			border-radius: 10%;
 			object-fit: cover;
 		}

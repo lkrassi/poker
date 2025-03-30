@@ -47,7 +47,7 @@
 		openModal(UpdateUsername, {
 			title: '',
 			onClose: closeModal,
-			containerClass: 'update-user-modal'
+			containerClass: 'update-username-modal'
 		});
 	};
 </script>

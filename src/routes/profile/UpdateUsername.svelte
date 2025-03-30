@@ -53,6 +53,12 @@
 </form>
 
 <style lang="scss">
+	@media (max-width: 576px) {
+		:global(.update-username-modal) {
+			transform: translateY(-10rem);
+		}
+	}
+
 	.update-username {
 		&__input-container {
 			position: relative;
