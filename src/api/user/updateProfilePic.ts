@@ -36,7 +36,6 @@ export const updateProfilePic = async (file: File) => {
 
 		switch (res.status) {
 			case 204:
-				setUser(user);
 				return { success: true, message: 'Аватар успешно обновлён' };
 			case 400:
 				return { success: false, message: 'Невозможно открыть файл' };

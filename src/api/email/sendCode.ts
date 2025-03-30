@@ -22,7 +22,6 @@ export const sendConfirmationCode = async (email: string, password: string) => {
 				return { success: false, message: data.message || 'Неизвестная ошибка' };
 		}
 	} catch (error) {
-		console.error('Ошибка отправки кода:', error);
 		return { success: false, message: 'Ошибка сети, проверьте подключение' };
 	}
 };

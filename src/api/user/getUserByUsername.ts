@@ -32,7 +32,6 @@ export const getUserByUsername = async () => {
 				return { success: false, message: 'Ошибка при получении данных пользователя' };
 		}
 	} catch (error) {
-		console.error('Ошибка при запросе пользователя:', error);
 		return { success: false, message: 'Ошибка сети, проверьте подключение' };
 	}
 };

@@ -34,10 +34,6 @@ export const getAllLobbies = async (page: number = 0) => {
 				};
 		}
 	} catch (error) {
-		console.error('Ошибка при получении лобби:', error);
-		return {
-			success: false,
-			message: error instanceof Error ? error.message : 'Ошибка сети, проверьте подключение'
-		};
+		return { success: false, message: 'Ошибка сети, проверьте подключение' };
 	}
 };

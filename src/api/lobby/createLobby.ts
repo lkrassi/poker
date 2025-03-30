@@ -19,20 +19,17 @@ export const createLobby = async (lobbyData: {
 			body: JSON.stringify(lobbyData)
 		});
 
-		if (res.status === 201) {
-			const lobbyId = await res.json();
-			return { success: true, lobbyId };
+		switch (res.status) {
+			case 201:
+				const lobbyId = await res.json();
+				return { success: true, lobbyId };
+			case 400:
+				return { success: false, message: 'Ошибка в данных лобби' };
+			case 401:
+				return { success: false, message: 'Неверный идентификатор пользователя' };
+			default:
+				return { success: false, message: 'Ошибка при создании лобби' };
 		}
-
-		if (res.status === 400) {
-			return { success: false, message: 'Ошибка в данных лобби' };
-		}
-
-		if (res.status === 401) {
-			return { success: false, message: 'Неверный идентификатор пользователя' };
-		}
-
-		return { success: false, message: 'Ошибка при создании лобби' };
 	} catch (error) {
 		return { success: false, message: 'Ошибка сети, проверьте подключение' };
 	}

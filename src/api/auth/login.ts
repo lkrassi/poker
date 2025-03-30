@@ -31,7 +31,6 @@ export const loginUser = async (email: string, password: string) => {
 				return { success: false, message: 'Ошибка авторизации, попробуйте позже' };
 		}
 	} catch (error) {
-		console.error('Ошибка входа:', error);
 		return { success: false, message: 'Ошибка сети, проверьте подключение' };
 	}
 };

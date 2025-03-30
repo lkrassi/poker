@@ -26,7 +26,6 @@ export const confirmEmail = async (email: string, code: string) => {
 				return { success: false, message: data?.message || 'Неизвестная ошибка' };
 		}
 	} catch (error) {
-		console.error('Ошибка подтверждения email:', error);
 		return { success: false, message: 'Ошибка сети, проверьте подключение' };
 	}
 };

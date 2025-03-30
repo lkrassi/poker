@@ -33,7 +33,6 @@ export const registerUser = async (username: string, email: string, password: st
 				return { success: false, message: 'Ошибка регистрации, попробуйте позже' };
 		}
 	} catch (error) {
-		console.error('Ошибка регистрации:', error);
 		return { success: false, message: 'Ошибка сети, проверьте подключение' };
 	}
 };
