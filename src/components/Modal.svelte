@@ -17,7 +17,7 @@
 	let isVisible = false;
 
 	const handleClickOutside = (event: MouseEvent) => {
-		if (closable && event.target === modalRef?.parentElement) {
+		if (closable && event.target === modalRef?.parentElement && typeof onClose === 'function') {
 			onClose();
 		}
 	};
@@ -49,7 +49,7 @@
 				escapeDeactivates: closable,
 				clickOutsideDeactivates: closable,
 				onDeactivate: () => {
-					if (closable) onClose();
+					if (closable && typeof onClose === 'function') onClose();
 				}
 			});
 			focusTrap.activate();

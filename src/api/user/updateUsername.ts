@@ -29,7 +29,10 @@ export const updateUsername = async (newUsername: string) => {
 				setUser({ ...user, username: newUsername });
 				return { success: true };
 			case 400:
-				return { success: false, message: 'Имя пользователя может содержать от 4 до 32 символов' };
+				return {
+					success: false,
+					message: 'Имя пользователя может состовлять от 4 до 32 латинских букв'
+				};
 			case 401:
 				return { success: false, message: 'Неверный идентификатор пользователя' };
 			case 404:

@@ -2,6 +2,7 @@
 	import { apiFacade } from '$lib/apiFacade';
 
 	import { showMessage } from '../../stores/messageStore';
+	import { closeModal } from '../../stores/modalStore';
 
 	let selectedFile: File | null = null;
 	let imagePreviewUrl: string | null = null;
@@ -51,6 +52,7 @@
 		try {
 			const response = await apiFacade.updateProfilePic(selectedFile);
 			if (response.success) {
+				closeModal();
 				showMessage('success', response.message);
 				imagePreviewUrl = null;
 				selectedFile = null;
