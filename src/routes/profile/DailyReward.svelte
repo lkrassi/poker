@@ -141,9 +141,6 @@
 		position: relative;
 		width: 20rem;
 		height: 20rem;
-		font:
-			1rem/1 'Roboto',
-			sans-serif;
 
 		&__container {
 			position: absolute;
@@ -177,21 +174,19 @@
 			width: 50%;
 			height: 50%;
 			transform-origin: 0 100%;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			padding-bottom: 2rem;
 		}
 
 		&__label-text {
-			position: absolute;
-			top: 0;
-			left: 0;
-			box-sizing: border-box;
-			margin-left: -0.4rem;
-			padding-left: 4rem;
-			width: 100%;
-			height: 100%;
 			transform: rotate(-90deg);
+			transform-origin: left center;
 			text-align: center;
 			font-size: 1rem;
 			color: var(--text-color);
+			white-space: nowrap;
 		}
 	}
 
@@ -255,12 +250,12 @@
 
 	@media (max-width: 576px) {
 		.wheel-of-fortune {
-			width: 13rem;
-			height: 13rem;
+			width: 12rem;
+			height: 12rem;
 			margin: 0 0 4rem;
 
-			&__label-text {
-				padding-left: 3rem;
+			&__label {
+				padding-bottom: 1.5rem;
 			}
 		}
 

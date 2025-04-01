@@ -16,10 +16,18 @@
 		flex-direction: column;
 
 		.modal-image {
-			width: 90%;
-			height: 20rem;
+			width: 45rem;
+			height: 30rem;
 			border-radius: 10%;
 			object-fit: cover;
+		}
+	}
+
+	@media (min-width: 576px) and (max-width: 768px) {
+		.image-modal {
+			.modal-image {
+				width: 35rem;
+			}
 		}
 	}
 

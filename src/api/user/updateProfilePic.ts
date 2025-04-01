@@ -4,7 +4,6 @@ import fetchWithRefresh from '$lib/fetchWithRefresh';
 export const updateProfilePic = async (file: File) => {
 	try {
 		const BASE_URL = import.meta.env.VITE_BASE_URL;
-
 		if (!file) {
 			return { success: false, message: 'Файл не выбран' };
 		}

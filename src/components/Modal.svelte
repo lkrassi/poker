@@ -110,9 +110,6 @@
 		margin: 0;
 
 		.modal-container {
-			padding: 2rem;
-			width: min(90vw, 31.25rem);
-			max-height: calc(100vh - 4rem);
 			overflow: auto;
 			display: flex;
 			flex-direction: column;
@@ -144,7 +141,6 @@
 
 		@media (max-width: 576px) {
 			.modal-container {
-				padding: 1.5rem;
 				width: 95vw;
 				max-height: calc(100vh - 2rem);
 			}

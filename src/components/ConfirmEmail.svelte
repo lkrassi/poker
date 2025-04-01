@@ -87,10 +87,12 @@
 <style lang="scss">
 	:global(.confirm-email-modal) {
 		backdrop-filter: blur(10px);
-		padding: 1.5rem;
-		border-radius: 1.25rem;
 		border: 1px solid rgba(255, 255, 255, 0.2);
 		box-shadow: 0 0.25rem 0.625rem var(--box-shadow-color);
+		padding: 1.5rem;
+		border-radius: 1.25rem;
+		width: 100%;
+		max-width: 500px;
 	}
 
 	@media (max-width: 576px) {
@@ -127,12 +129,8 @@
 
 	.submit-btn {
 		width: 100%;
-		padding: 10px;
 		background-color: var(--primary-color);
-		color: #fff;
-		border: none;
-		border-radius: 20px;
-		cursor: pointer;
+		color: var(--text-color);
 		transition:
 			background-color 0.3s ease,
 			transform 0.1s ease;
