@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Shafarik&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -5,7 +7,7 @@
 }
 
 body {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Playfair Display', serif;
 	background-color: var(--bg-color);
 	color: var(--text-color);
 }
@@ -28,22 +30,21 @@ form {
 input,
 textarea,
 select {
+	font-family: 'Playfair Display', serif;
 	width: 100%;
 	padding: 10px;
 	border-radius: 4px;
-	font-size: 16px;
 	color: var(--text-color);
 }
 
 input::placeholder {
-	font-size: 1rem;
 	opacity: 0.7;
 }
 
 button {
+	font-family: 'Playfair Display', serif;
 	display: inline-block;
 	padding: 0.7rem;
-	font-size: 1rem;
 	border: none;
 	outline: none;
 	border-radius: 15px;
@@ -52,7 +53,6 @@ button {
 }
 
 p {
-	font-size: 1.4rem;
 	color: var(--text-color);
 }
 
