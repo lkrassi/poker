@@ -45,12 +45,8 @@
 			#first-page-content__goto-register-btn,
 			#first-page-content__goto-login-btn {
 				width: 18.5rem;
-				padding: 10px 15px;
-				font-size: 16px;
 				color: var(--text-color);
 				background-color: var(--primary-color);
-				border-radius: 15px;
-				cursor: pointer;
 				transition: 0.3s ease;
 
 				&:hover,
