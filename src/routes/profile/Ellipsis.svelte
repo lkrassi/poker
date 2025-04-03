@@ -1,7 +1,7 @@
 <script lang="ts">
 	import UpdateProfilePic from './UpdateProfilePic.svelte';
 
-	import { openModal, closeModal } from '../../stores/modalStore';
+	import { openModal, closeModal } from '$stores/ui/modalStore';
 
 	const openProfileModal = () => {
 		openModal(UpdateProfilePic, {

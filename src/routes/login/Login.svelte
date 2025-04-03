@@ -1,15 +1,16 @@
 <script lang="ts">
-	import ConfirmEmail from '../../components/ConfirmEmail.svelte';
-
-	import EmailIcon from '../../assets/icons/EmailIcon.svelte';
-	import PasswordIcon from '../../assets/icons/PasswordIcon.svelte';
-
-	import { withLoader } from '$lib/loader';
 	import { apiFacade } from '$lib/apiFacade';
 
-	import { emailStore } from '../../stores/emailStore';
-	import { showMessage } from '../../stores/messageStore';
-	import { openModal } from '../../stores/modalStore';
+	import ConfirmEmail from '../register/ConfirmEmail.svelte';
+
+	import EmailIcon from '$icons/EmailIcon.svelte';
+	import PasswordIcon from '$icons/PasswordIcon.svelte';
+
+	import { withLoader } from '$lib/loader';
+
+	import { emailStore } from '$stores/data/emailStore';
+	import { showMessage } from '$stores/ui/messageStore';
+	import { openModal } from '$stores/ui/modalStore';
 
 	import { goto } from '$app/navigation';
 

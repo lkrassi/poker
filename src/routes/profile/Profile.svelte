@@ -1,17 +1,17 @@
 <script lang="ts">
+	import { apiFacade } from '$lib/apiFacade';
+
 	import Ellipsis from './Ellipsis.svelte';
 	import Logout from './Logout.svelte';
 	import DailyReward from './DailyReward.svelte';
 	import UpdateUsername from './UpdateUsername.svelte';
 	import ImageModal from './ImageModal.svelte';
 
-	import ChipsIcon from '../../assets/icons/ChipsIcon.svelte';
+	import ChipsIcon from '$icons/ChipsIcon.svelte';
 
-	import { apiFacade } from '$lib/apiFacade';
-
-	import { userStore, setUser } from '../../stores/userStore';
-	import { showMessage } from '../../stores/messageStore';
-	import { openModal, closeModal } from '../../stores/modalStore';
+	import { userStore, setUser } from '$stores/data/userStore';
+	import { showMessage } from '$stores/ui/messageStore';
+	import { openModal, closeModal } from '$stores/ui/modalStore';
 
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
@@ -135,7 +135,6 @@
 			color: var(--text-color);
 			font-size: 2rem;
 			display: flex;
-			align-items: center;
 			gap: 0.5rem;
 			font-weight: 700;
 			transition:

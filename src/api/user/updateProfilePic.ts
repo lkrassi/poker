@@ -1,4 +1,5 @@
 import { getUserByUsername } from './getUserByUsername';
+
 import fetchWithRefresh from '$lib/fetchWithRefresh';
 
 export const updateProfilePic = async (file: File) => {

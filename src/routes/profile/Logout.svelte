@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { clearLocalStorage } from '$lib/clearLocalStorage';
 
-	import { clearUser } from '../../stores/userStore';
-	import { showMessage } from '../../stores/messageStore';
+	import { clearUser } from '$stores/data/userStore';
+	import { showMessage } from '$stores/ui/messageStore';
 
 	import { goto } from '$app/navigation';
 

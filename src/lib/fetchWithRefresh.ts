@@ -1,4 +1,4 @@
-import { apiFacade } from '$lib/apiFacade';
+import { apiFacade } from './apiFacade';
 
 const fetchWithRefresh = async (url: string, options: RequestInit): Promise<Response> => {
 	let res = await fetch(url, options);

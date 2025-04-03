@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { showMessage } from '../../stores/messageStore';
-
 	import { apiFacade } from '$lib/apiFacade';
+
+	import { showMessage } from '$stores/ui/messageStore';
 
 	import { onMount } from 'svelte';
 

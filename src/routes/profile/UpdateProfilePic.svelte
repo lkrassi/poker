@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { apiFacade } from '$lib/apiFacade';
 
-	import { showMessage } from '../../stores/messageStore';
-	import { closeModal } from '../../stores/modalStore';
+	import { showMessage } from '$stores/ui/messageStore';
+	import { closeModal } from '$stores/ui/modalStore';
 
 	let selectedFile: File | null = null;
 	let imagePreviewUrl: string | null = null;

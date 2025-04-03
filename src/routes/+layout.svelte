@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { beforeNavigate, goto } from '$app/navigation';
-	import { showMessage } from '../stores/messageStore';
 
-	import Message from '../components/Message.svelte';
-	import Loader from '../components/Loader.svelte';
-	import Modal from '../components/Modal.svelte';
+	import Message from '$components/Message.svelte';
+	import Loader from '$components/Loader.svelte';
+	import Modal from '$components/Modal.svelte';
 
-	import { isLoading } from '../stores/loaderStore';
-	import { modalStore, type ModalState } from '../stores/modalStore';
+	import { isLoading } from '$stores/ui/loaderStore';
+	import { modalStore, type ModalState } from '$stores/ui/modalStore';
+	import { showMessage } from '$stores/ui/messageStore';
 
 	let modalState: ModalState;
 

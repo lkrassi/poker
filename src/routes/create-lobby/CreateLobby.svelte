@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { apiFacade } from '$lib/apiFacade';
 
-	import MoneyIcom from '../../assets/icons/MoneyIcom.svelte';
-	import TimeIcon from '../../assets/icons/TimeIcon.svelte';
-	import UserIcon from '../../assets/icons/UserIcon.svelte';
-	import ChipIcon from '../../assets/icons/ChipIcon.svelte';
+	import MoneyIcom from '$icons/MoneyIcom.svelte';
+	import TimeIcon from '$icons/TimeIcon.svelte';
+	import UserIcon from '$icons/UserIcon.svelte';
+	import ChipIcon from '$icons/ChipIcon.svelte';
 
-	import { showMessage } from '../../stores/messageStore';
+	import { showMessage } from '$stores/ui/messageStore';
 
 	let ante: number | null = null;
 	let blindIncreaseTime: number | null = null;

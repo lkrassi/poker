@@ -1,5 +1,5 @@
 import { sendConfirmationCode } from '../email/sendCode';
-import { setUser } from '../../stores/userStore';
+import { setUser } from '$stores/data/userStore';
 
 export const loginUser = async (email: string, password: string) => {
 	try {

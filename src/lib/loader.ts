@@ -1,4 +1,4 @@
-import { isLoading } from '../stores/loaderStore';
+import { isLoading } from '$stores/ui/loaderStore';
 
 export async function withLoader<T>(promise: Promise<T>): Promise<T> {
 	isLoading.set(true);

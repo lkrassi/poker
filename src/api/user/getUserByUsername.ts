@@ -1,6 +1,8 @@
-import { setUser, userStore } from '../../stores/userStore';
-import { get } from 'svelte/store';
+import { setUser, userStore } from '$stores/data/userStore';
+
 import fetchWithRefresh from '$lib/fetchWithRefresh';
+
+import { get } from 'svelte/store';
 
 export const getUserByUsername = async () => {
 	try {

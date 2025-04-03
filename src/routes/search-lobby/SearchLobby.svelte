@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { apiFacade } from '$lib/apiFacade';
-	import { showMessage } from '../../stores/messageStore';
 
 	interface Lobby {
 		lobby_id: string;

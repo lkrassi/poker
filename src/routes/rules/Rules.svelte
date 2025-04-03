@@ -1,9 +1,3 @@
-<script lang="ts">
-	import Header from '../../components/Header.svelte';
-</script>
-
-<Header />
-
 <div class="rules-container">
 	<h1 class="rules-container__title">Правила Техасского Холдема</h1>
 

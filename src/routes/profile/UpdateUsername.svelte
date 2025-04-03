@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { apiFacade } from '$lib/apiFacade';
 
-	import { showMessage } from '../../stores/messageStore';
-	import { userStore } from '../../stores/userStore';
-	import { closeModal } from '../../stores/modalStore';
+	import { showMessage } from '$stores/ui/messageStore';
+	import { userStore } from '$stores/data/userStore';
+	import { closeModal } from '$stores/ui/modalStore';
 
 	import { onMount } from 'svelte';
 

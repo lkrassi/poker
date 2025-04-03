@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { emailStore } from '../stores/emailStore';
-	import { showMessage } from '../stores/messageStore';
-
 	import { apiFacade } from '$lib/apiFacade';
 
-	import { closeModal } from '../stores/modalStore';
+	import { emailStore } from '$stores/data/emailStore';
+	import { showMessage } from '$stores/ui/messageStore';
+	import { closeModal } from '$stores/ui/modalStore';
 
 	import { goto } from '$app/navigation';
 	import { tick } from 'svelte';

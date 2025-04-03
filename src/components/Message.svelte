@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { messageStore } from '$stores/ui/messageStore';
+
 	import { onDestroy } from 'svelte';
-	import { messageStore } from '../stores/messageStore';
 
 	type Message = { id: number; type: 'success' | 'error' | 'info'; text: string; duration: number };
 
