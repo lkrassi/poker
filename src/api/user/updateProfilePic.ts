@@ -28,7 +28,7 @@ export const updateProfilePic = async (file: File) => {
 		});
 
 		switch (res.status) {
-			case 204:
+			case 200:
 				const userUpdateResponse = await getUserByUsername();
 				if (userUpdateResponse.success) {
 					return { success: true, message: 'Аватар успешно обновлён' };

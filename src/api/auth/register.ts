@@ -10,8 +10,6 @@ export const registerUser = async (username: string, email: string, password: st
 			body: JSON.stringify({ username, email, password })
 		});
 
-		const data = await res.json();
-
 		switch (res.status) {
 			case 201:
 				const confirmationResult = await sendConfirmationCode(email, password);

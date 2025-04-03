@@ -31,7 +31,8 @@ export const updateUsername = async (newUsername: string) => {
 			case 400:
 				return {
 					success: false,
-					message: 'Имя пользователя может состовлять от 4 до 32 латинских букв'
+					message:
+						'Никнейм должен быть от 4 до 32 символов и может содержать только латинские буквы, цифры и символы: _ # $ & * -'
 				};
 			case 401:
 				return { success: false, message: 'Неверный идентификатор пользователя' };
