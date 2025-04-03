@@ -208,7 +208,7 @@
 			border: none;
 			background: var(--primary-color);
 			color: var(--text-color);
-			font-size: 1.4rem;
+			font-size: 1.6rem;
 			font-weight: bold;
 			cursor: pointer;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);

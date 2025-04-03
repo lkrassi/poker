@@ -15,27 +15,74 @@
 		last_blind_increase_time: string;
 	}
 
+	interface ApiResponse {
+		success: boolean;
+		lobbies?: Lobby[];
+		message?: string;
+		total?: number;
+	}
+
 	let lobbies: Lobby[] = [];
+	let currentPage = 0;
+	let totalPages = 1;
+	const LOBBY_PER_PAGE = 50;
 
-	const fetchLobbies = async () => {
-		const response = await apiFacade.getAllLobbies(0);
+	const fetchLobbies = async (page: number = 0) => {
+		const response: ApiResponse = await apiFacade.getAllLobbies(page);
 
-		if (response.success) {
+		if (response.success && response.lobbies) {
 			lobbies = response.lobbies;
-		} else {
-			showMessage('error', response.message || 'Ошибка при загрузке лобби');
+			totalPages = response.total
+				? Math.ceil(response.total / LOBBY_PER_PAGE)
+				: response.lobbies.length === LOBBY_PER_PAGE
+					? currentPage + 2
+					: currentPage + 1;
+			currentPage = page;
+		}
+	};
+
+	const nextPage = () => {
+		if (currentPage < totalPages - 1) {
+			fetchLobbies(currentPage + 1);
+		}
+	};
+
+	const prevPage = () => {
+		if (currentPage > 0) {
+			fetchLobbies(currentPage - 1);
 		}
 	};
 
 	const formatTime = (timeString: string) => {
 		return new Date(timeString).toLocaleTimeString();
 	};
+
+	fetchLobbies(0);
 </script>
 
 <section class="search-lobby">
 	<div class="search-lobby__container">
 		<h1 class="search-lobby__title">Доступные лобби</h1>
-		<button class="search-lobby__button" on:click={fetchLobbies}>Обновить список</button>
+		<div class="search-lobby__controls">
+			<button class="search-lobby__button" on:click={() => fetchLobbies(currentPage)}
+				>Обновить список</button
+			>
+			<div class="search-lobby__pagination">
+				<button class="search-lobby__page-button" on:click={prevPage} disabled={currentPage === 0}>
+					← Назад
+				</button>
+				<span class="search-lobby__page-info">
+					{currentPage + 1} из {totalPages}
+				</span>
+				<button
+					class="search-lobby__page-button"
+					on:click={nextPage}
+					disabled={currentPage >= totalPages - 1}
+				>
+					Вперед →
+				</button>
+			</div>
+		</div>
 
 		<div class="search-lobby__list">
 			{#if lobbies.length === 0}
@@ -49,11 +96,6 @@
 							</h3>
 							<div class="search-lobby__players">
 								Игроки: {lobby.current_players_count}/{lobby.max_players}
-								{#if lobby.current_players_count < lobby.min_players_to_start}
-									<span class="search-lobby__waiting">(ожидание игроков)</span>
-								{:else}
-									<span class="search-lobby__ready">(можно начинать)</span>
-								{/if}
 							</div>
 						</div>
 
@@ -110,9 +152,15 @@
 			color: var(--text-color);
 		}
 
+		&__controls {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+			align-items: center;
+		}
+
 		&__button {
 			display: block;
-			margin: 0 auto;
 			padding: 10px 20px;
 			color: var(--text-color);
 			background-color: var(--primary-color);
@@ -131,6 +179,43 @@
 			&:active {
 				transform: scale(0.99);
 			}
+		}
+
+		&__pagination {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+		}
+
+		&__page-button {
+			padding: 8px 15px;
+			color: var(--text-color);
+			background-color: var(--primary-color);
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+			font-size: 0.9rem;
+			transition: 0.3s ease;
+
+			&:hover:not(:disabled),
+			&:focus:not(:disabled) {
+				background-color: var(--primary-color-hover);
+				transform: scale(1.01);
+			}
+
+			&:active:not(:disabled) {
+				transform: scale(0.99);
+			}
+
+			&:disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+		}
+
+		&__page-info {
+			font-size: 0.9rem;
+			color: var(--text-color);
 		}
 
 		&__list {
@@ -184,14 +269,6 @@
 			}
 		}
 
-		&__waiting {
-			color: var(--warning-color);
-		}
-
-		&__ready {
-			color: var(--success-color);
-		}
-
 		&__join-button {
 			color: var(--text-color);
 			background-color: var(--primary-color);
@@ -215,6 +292,19 @@
 
 			&__card {
 				flex: 1 1 100%;
+			}
+
+			&__pagination {
+				gap: 10px;
+			}
+
+			&__page-button {
+				padding: 6px 10px;
+				font-size: 0.8rem;
+			}
+
+			&__page-info {
+				font-size: 0.8rem;
 			}
 		}
 	}

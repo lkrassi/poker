@@ -230,8 +230,6 @@
 			}
 
 			&__input {
-				font-size: 0.7rem;
-
 				&::placeholder {
 					font-size: 0.7rem;
 				}
