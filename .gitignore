@@ -38,7 +38,7 @@ yarn-error.log*
 *.sln
 *.sw?
 
-/tests/**/__snapshots__/*
-/tests/**/__fixtures__/*
-
-*.scss
+#theme switch
+src/assets/icons/moon.svg
+src/assets/icons/sun.svg
+src/components/ThemeSwitcher.svelte
