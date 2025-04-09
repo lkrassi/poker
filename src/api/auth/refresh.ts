@@ -12,9 +12,16 @@ export const refreshToken = async (accessToken: string, refreshToken: string) =>
 
 		switch (res.status) {
 			case 201:
-				localStorage.setItem('access_token', data.access_token);
-				localStorage.setItem('refresh_token', data.refresh_token);
-				return { success: true };
+				localStorage.setItem('access_token', data.tokens.access_token);
+				localStorage.setItem('refresh_token', data.tokens.refresh_token);
+				return {
+					success: true,
+					message: 'Токены успешно обновлены',
+					tokens: {
+						access_token: data.tokens.access_token,
+						refresh_token: data.tokens.refresh_token
+					}
+				};
 			default:
 				return { success: false, message: 'Ошибка обновления токенов, попробуйте позже' };
 		}

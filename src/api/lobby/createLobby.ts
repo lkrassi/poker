@@ -21,8 +21,8 @@ export const createLobby = async (lobbyData: {
 
 		switch (res.status) {
 			case 201:
-				const lobbyId = await res.json();
-				return { success: true, lobbyId };
+				const data = await res.json();
+				return { success: true, lobbyId: data.lobbyId };
 			case 400:
 				return { success: false, message: 'Ошибка в данных лобби' };
 			case 401:

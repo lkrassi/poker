@@ -19,7 +19,7 @@ export const loginUser = async (email: string, password: string) => {
 				setUser(data.user);
 				return { success: true, message: 'Вход успешен!', user: data.user };
 			case 400:
-				return { success: false, message: 'Некорректные данные, проверьте ввод' };
+				return { success: false, message: 'Некорректные данные или не все поля заполнены' };
 			case 401:
 				return { success: false, message: 'Неверный логин или пароль' };
 			case 403:
