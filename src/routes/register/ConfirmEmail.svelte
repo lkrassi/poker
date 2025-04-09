@@ -65,6 +65,7 @@
 </script>
 
 <form on:submit|preventDefault={handleConfirm}>
+	<h2 class="title">Подтверждение Email</h2>
 	<div class="code-inputs">
 		{#each codes as _, index}
 			<input
@@ -98,6 +99,11 @@
 		:global(.confirm-email-modal) {
 			transform: translateY(-10rem);
 		}
+	}
+
+	.title {
+		font-size: 2rem;
+		margin: 0 0 1rem;
 	}
 
 	.code-inputs {

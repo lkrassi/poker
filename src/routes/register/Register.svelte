@@ -24,8 +24,8 @@
 			emailStore.set(email);
 
 			openModal(ConfirmEmail, {
-				title: 'Подтверждение Email',
-				containerClass: 'confirm-email-modal'
+				containerClass: 'confirm-email-modal',
+				closable: false
 			});
 		} else {
 			showMessage('error', result.message || 'Ошибка регистрации');

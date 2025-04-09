@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { apiFacade } from '$lib/apiFacade';
 
-	interface Lobby {
+	interface LobbyInfo {
 		lobby_id: string;
+		blind_increase_time: number;
+		last_blind_increase_time: string;
 		max_players: number;
 		min_players_to_start: number;
 		current_players_count: number;
@@ -10,8 +12,11 @@
 		small_blind: number;
 		ante: number;
 		bank_amount: number;
-		blind_increase_time: number;
-		last_blind_increase_time: string;
+	}
+
+	interface Lobby {
+		info: LobbyInfo;
+		players: any;
 	}
 
 	interface ApiResponse {
@@ -91,29 +96,32 @@
 					<div class="search-lobby__card">
 						<div class="search-lobby__card-header">
 							<h3 class="search-lobby__card-title">
-								{lobby.cache_game ? 'Кэш-игра' : 'Sit&Go-игра'} #{lobby.lobby_id.slice(0, 8)}
+								{lobby.info.cache_game ? 'Кэш-игра' : 'Sit&Go-игра'} #{lobby.info.lobby_id.slice(
+									0,
+									8
+								)}
 							</h3>
 							<div class="search-lobby__players">
-								Игроки: {lobby.current_players_count}/{lobby.max_players}
+								Игроки: {lobby.info.current_players_count}/{lobby.info.max_players}
 							</div>
 						</div>
 
 						<div class="search-lobby__card-body">
 							<div class="search-lobby__card-row">
 								<span>Блайнд:</span>
-								<span>{lobby.small_blind}/{lobby.small_blind * 2}</span>
+								<span>{lobby.info.small_blind}/{lobby.info.small_blind * 2}</span>
 							</div>
 							<div class="search-lobby__card-row">
 								<span>Анте:</span>
-								<span>{lobby.ante}</span>
+								<span>{lobby.info.ante}</span>
 							</div>
 							<div class="search-lobby__card-row">
 								<span>Банк:</span>
-								<span>{lobby.bank_amount}</span>
+								<span>{lobby.info.bank_amount}</span>
 							</div>
 							<div class="search-lobby__card-row">
 								<span>След. уровень:</span>
-								<span>{formatTime(lobby.last_blind_increase_time)}</span>
+								<span>{formatTime(lobby.info.last_blind_increase_time)}</span>
 							</div>
 						</div>
 

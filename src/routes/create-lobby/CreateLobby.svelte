@@ -14,6 +14,14 @@
 	let maxPlayers: number | null = null;
 	let smallBlind: number | null = null;
 
+	const resetForm = () => {
+		ante = null;
+		blindIncreaseTime = null;
+		cacheGame = true;
+		maxPlayers = null;
+		smallBlind = null;
+	};
+
 	const handleCreateLobby = async () => {
 		const blindIncreaseTimeFormatted = blindIncreaseTime ? `${blindIncreaseTime}m` : '15m';
 
@@ -32,7 +40,9 @@
 			const message = isDefaultSettings
 				? 'Лобби успешно создано с настройками по умолчанию'
 				: 'Лобби успешно создано!';
+
 			showMessage('success', message);
+			resetForm();
 		} else {
 			showMessage('error', response.message || 'Ошибка при создании лобби');
 		}

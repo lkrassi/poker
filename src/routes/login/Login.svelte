@@ -29,7 +29,6 @@
 				emailStore.set(email);
 
 				openModal(ConfirmEmail, {
-					title: 'Подтверждение Email',
 					containerClass: 'confirm-email-modal'
 				});
 			} else {

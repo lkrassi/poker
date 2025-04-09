@@ -5,7 +5,6 @@
 	import { createFocusTrap } from 'focus-trap';
 	import type { FocusTrap } from 'focus-trap';
 
-	export let title: string = '';
 	export let onClose: () => void;
 	export let closable: boolean = true;
 	export let containerClass: string = '';
@@ -19,6 +18,18 @@
 	const handleClickOutside = (event: MouseEvent) => {
 		if (closable && event.target === modalRef?.parentElement && typeof onClose === 'function') {
 			onClose();
+		}
+	};
+
+	const handleKeyDown = (event: KeyboardEvent) => {
+		if (!closable && event.key === 'Escape') {
+			event.preventDefault();
+		}
+	};
+
+	const restoreFocus = () => {
+		if (modalRef && !modalRef.contains(document.activeElement)) {
+			modalRef.focus();
 		}
 	};
 
@@ -50,10 +61,15 @@
 				clickOutsideDeactivates: closable,
 				onDeactivate: () => {
 					if (closable && typeof onClose === 'function') onClose();
-				}
+				},
+				initialFocus: modalRef,
+				fallbackFocus: modalRef
 			});
 			focusTrap.activate();
 		}
+
+		window.addEventListener('keydown', handleKeyDown);
+		window.addEventListener('focusin', restoreFocus);
 	});
 
 	onDestroy(() => {
@@ -61,6 +77,8 @@
 		if (focusTrap) {
 			focusTrap.deactivate();
 		}
+		window.removeEventListener('keydown', handleKeyDown);
+		window.removeEventListener('focusin', restoreFocus);
 	});
 </script>
 
@@ -78,10 +96,8 @@
 			aria-labelledby="modal-title"
 			in:fly={{ y: 50, duration: animationDuration, easing: quintOut }}
 			out:fade={{ duration: animationDuration }}
+			tabindex="-1"
 		>
-			<div class="modal-container__header">
-				<h2 id="modal-title" class="modal-container__title">{title}</h2>
-			</div>
 			<div class="modal-container__body">
 				<slot />
 			</div>
@@ -115,21 +131,6 @@
 			flex-direction: column;
 			outline: none;
 			will-change: transform, opacity;
-
-			&__header {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				margin-bottom: 1.5rem;
-			}
-
-			&__title {
-				margin: 0;
-				color: var(--text-color);
-				font-size: 1.8rem;
-				text-align: center;
-				font-weight: 600;
-			}
 
 			&__body {
 				display: flex;

@@ -9,35 +9,18 @@
 
 	import ChipsIcon from '$icons/ChipsIcon.svelte';
 
-	import { userStore, setUser } from '$stores/data/userStore';
-	import { showMessage } from '$stores/ui/messageStore';
+	import { userStore } from '$stores/data/userStore';
 	import { openModal, closeModal } from '$stores/ui/modalStore';
 
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
 
 	onMount(async () => {
-		try {
-			const response = await apiFacade.getUserByUsername();
-
-			if (response.success && response.user) {
-				setUser(response.user);
-			} else {
-				goto('/login');
-				showMessage(
-					'error',
-					response.message || 'Для доступа к этой странице необходимо войти в аккаунт'
-				);
-			}
-		} catch (error) {
-			goto('/login');
-			showMessage('error', 'Ошибка при загрузке данных пользователя');
-		}
+		await apiFacade.getUserByUsername();
 	});
 
 	const openImageModal = () => {
 		openModal(ImageModal, {
-			imageUrl: `https://${$userStore.user?.profile_picture_url}`,
+			imageUrl: $userStore.user?.profile_picture_url,
 			altText: 'Аватарка пользователя в полном размере',
 			onClose: closeModal
 		});
@@ -45,7 +28,6 @@
 
 	const openUpdateUsernameModal = () => {
 		openModal(UpdateUsername, {
-			title: '',
 			onClose: closeModal,
 			containerClass: 'update-username-modal'
 		});
@@ -56,10 +38,10 @@
 	<div class="profile">
 		<div class="profile__user-data">
 			<div class="profile__img-actions">
-				<button class="profile__img" on:click={openImageModal}>
+				<button id="profile__img" on:click={openImageModal}>
 					<img
 						class="profile__img"
-						src={`https://${$userStore.user?.profile_picture_url}`}
+						src={$userStore.user?.profile_picture_url}
 						alt="Аватарка пользователя"
 					/>
 				</button>
@@ -100,27 +82,32 @@
 			display: flex;
 		}
 
+		#profile__img {
+			transition: 0.3s ease;
+			padding: 0;
+
+			&:hover,
+			&:focus {
+				transform: scale(1.1);
+			}
+		}
+
 		&__img {
+			height: auto;
 			width: 11rem;
 			height: 11rem;
 			border-radius: 50%;
 			object-fit: cover;
-			margin-bottom: 1.5rem;
 			cursor: pointer;
 			transition:
 				transform 0.3s ease,
 				box-shadow 0.3s ease;
-
-			&:hover {
-				transform: scale(1.01);
-			}
 		}
 
 		&__username {
 			font-weight: 600;
 			color: var(--text-color);
 			font-size: 4rem;
-			margin: 1rem 0;
 			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 			padding: 0;
 			transition: 0.3s ease;
@@ -168,7 +155,6 @@
 
 			&__user-data {
 				margin: 6rem 0 0;
-				align-items: center;
 
 				.profile__username {
 					font-size: 2.5rem;

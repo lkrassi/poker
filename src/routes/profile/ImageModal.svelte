@@ -21,6 +21,11 @@
 			border-radius: 10%;
 			object-fit: cover;
 		}
+
+		button {
+			opacity: 0;
+			cursor: auto;
+		}
 	}
 
 	@media (min-width: 576px) and (max-width: 768px) {

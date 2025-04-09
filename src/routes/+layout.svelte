@@ -48,11 +48,7 @@
 {/if}
 
 {#if modalState.isOpen}
-	<Modal
-		title={modalState.props.title}
-		onClose={modalState.props.onClose}
-		containerClass={modalState.props.containerClass}
-	>
+	<Modal onClose={modalState.props.onClose} containerClass={modalState.props.containerClass}>
 		<svelte:component this={modalState.component} {...modalState.props} />
 	</Modal>
 {/if}
