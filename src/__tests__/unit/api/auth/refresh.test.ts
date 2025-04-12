@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { refreshToken } from '$api/auth/refresh';
+import { refreshToken } from 'src/features/auth/api/refresh';
 import { setUser } from '$stores/data/userStore';
-import { mockFetch, mockApiResponses, expectedResults } from '../../utils/mocks';
+import { mockFetch, mockApiResponses, expectedResults, newTokens } from '../../utils/mocks';
 import type { ApiResponse } from '../../utils/types';
 import {
 	expectRefreshTokenFetchCall,
@@ -35,7 +35,16 @@ describe('refreshToken', () => {
 	});
 
 	it('успешно обновляет токены', async () => {
-		mockFetch.mockResolvedValueOnce(mockApiResponses.refreshSuccess);
+		const successResponse = {
+			status: 201,
+			ok: true,
+			json: () =>
+				Promise.resolve({
+					access_token: newTokens.access_token,
+					refresh_token: newTokens.refresh_token
+				})
+		};
+		mockFetch.mockResolvedValueOnce(successResponse);
 
 		const result: ApiResponse = await refreshToken(oldTokens.access_token, oldTokens.refresh_token);
 

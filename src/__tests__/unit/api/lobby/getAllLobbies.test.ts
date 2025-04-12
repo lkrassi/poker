@@ -1,17 +1,15 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { getAllLobbies } from '$api/lobby/getAllLobbies';
+import { getAllLobbies } from 'src/features/lobby/api/getAllLobbies';
 import { mockFetch, mockApiResponses, expectedResults, mockTokens } from '../../utils/mocks';
 import type { ApiResponse } from '../../utils/types';
 import { expectGetAllLobbiesFetchCall } from '../../utils/testHelpers';
 
-// Мокаем localStorage
 const mockLocalStorage = {
 	getItem: vi.fn(),
 	setItem: vi.fn()
 };
 Object.defineProperty(window, 'localStorage', { value: mockLocalStorage });
 
-// Мокаем модули
 vi.mock('$lib/fetchWithRefresh', () => ({
 	default: vi.fn()
 }));
@@ -22,9 +20,8 @@ vi.mock('$lib/apiFacade', () => ({
 	}
 }));
 
-// Импортируем моки после их создания
-import fetchWithRefresh from '$lib/fetchWithRefresh';
-import { apiFacade } from '$lib/apiFacade';
+import fetchWithRefresh from 'src/shared/lib/api/fetchWithRefresh';
+import { apiFacade } from 'src/shared/lib/api/apiFacade';
 
 describe('getAllLobbies', () => {
 	beforeEach(() => {

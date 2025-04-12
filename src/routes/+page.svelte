@@ -11,7 +11,7 @@
 </script>
 
 <div class="first-page-content background-image">
-	<h1 class="first-page-content__title">CARD HOUSE</h1>
+	<h1 class="first-page-content__title">ДОБРО ПОЖАЛОВАТЬ В CARD HOUSE</h1>
 	<div class="first-page-content__crossing-buttons">
 		<button id="first-page-content__goto-register-btn" on:click={goRegister}
 			>Зарегистрировать новый аккакунт</button
@@ -31,13 +31,13 @@
 		gap: 10px;
 		min-height: 100vh;
 
-		.first-page-content__title {
-			font-size: 8rem;
+		&__title {
+			font-size: 4rem;
 			color: var(--text-color);
 			text-align: center;
 		}
 
-		.first-page-content__crossing-buttons {
+		&__crossing-buttons {
 			margin-top: 20px;
 			display: flex;
 			gap: 1rem;
@@ -64,11 +64,11 @@
 
 	@media (max-width: 576px) {
 		.first-page-content {
-			.first-page-content__title {
-				font-size: 5rem;
+			&__title {
+				font-size: 2.2rem;
 			}
 
-			.first-page-content__crossing-buttons {
+			&__crossing-buttons {
 				flex-direction: column;
 			}
 		}

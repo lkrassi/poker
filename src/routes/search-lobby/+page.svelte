@@ -1,9 +1,9 @@
 <script>
-	import SearchLobby from './SearchLobby.svelte';
-	import Header from '$components/Header.svelte';
+	import SearchLobbyForm from '../../features/lobby/ui/SearchLobbyForm.svelte';
+	import Header from '../../widgets/header/ui/Header.svelte';
 </script>
 
 <main class="search-lobby background-image">
 	<Header />
-	<SearchLobby />
+	<SearchLobbyForm />
 </main>

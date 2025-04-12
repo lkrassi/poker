@@ -1,7 +1,7 @@
 <script>
-	import Login from './Login.svelte';
+	import LoginForm from '../../features/auth/ui/LoginForm.svelte';
 </script>
 
 <main class="login background-image">
-	<Login />
+	<LoginForm />
 </main>

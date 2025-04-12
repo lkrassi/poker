@@ -6,7 +6,7 @@
 	};
 </script>
 
-<section class="error-page">
+<section class="error-page background-image">
 	<div class="error-page__go-back">
 		<h1 class="error-page__go-back__title">Страница не найдена</h1>
 		<button class="error-page__go-back__goto-first-btn" on:click={goFirst}>
@@ -17,11 +17,12 @@
 
 <style lang="scss">
 	.error-page {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 10px;
 		min-height: 100vh;
-		background-image: url(../assets/images/background.jpg);
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
 
 		&__go-back {
 			display: flex;
@@ -42,10 +43,6 @@
 				background-color: var(--primary-color);
 				transition: 0.3s ease;
 				width: 15rem;
-				padding: 10px;
-				border: none;
-				border-radius: 20px;
-				cursor: pointer;
 
 				&:hover,
 				&:focus {

@@ -10,13 +10,6 @@
 		"sourceMap": true,
 		"strict": true,
 		"moduleResolution": "bundler",
-		"baseUrl": ".",
-		"paths": {
-			"$api/*": ["src/api/*"],
-			"$components/*": ["src/components/*"],
-			"$stores/*": ["src/stores/*"],
-			"$lib/*": ["src/lib/*"],
-			"$icons/*": ["src/assets/icons/*"]
-		}
+		"baseUrl": "."
 	}
 }

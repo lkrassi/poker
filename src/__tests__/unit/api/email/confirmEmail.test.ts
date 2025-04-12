@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { confirmEmail } from '$api/email/confirmEmail';
+import { confirmEmail } from 'src/features/auth/api/confirmEmail';
 import { mockFetch, mockUserData, mockApiResponses, expectedResults } from '../../utils/mocks';
 import type { ApiResponse } from '../../utils/types';
 import { expectConfirmEmailFetchCall } from '../../utils/testHelpers';

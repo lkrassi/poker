@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { createLobby } from '$api/lobby/createLobby';
+import { createLobby } from 'src/features/lobby/api/createLobby';
 import {
 	mockFetch,
 	mockLobbyData,
@@ -26,8 +26,8 @@ vi.mock('$lib/apiFacade', () => ({
 	}
 }));
 
-import fetchWithRefresh from '$lib/fetchWithRefresh';
-import { apiFacade } from '$lib/apiFacade';
+import fetchWithRefresh from 'src/shared/lib/api/fetchWithRefresh';
+import { apiFacade } from 'src/shared/lib/api/apiFacade';
 
 describe('createLobby', () => {
 	beforeEach(() => {

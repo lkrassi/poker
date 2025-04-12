@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { loginUser } from '$api/auth/login';
-import { sendConfirmationCode } from '$api/email/sendCode';
+import { sendConfirmationCode } from 'src/features/auth/api/sendCode';
 import { setUser } from '$stores/data/userStore';
 import {
 	mockFetch,
