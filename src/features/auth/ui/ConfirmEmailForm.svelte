@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { apiFacade } from '../../../shared/lib/api/apiFacade';
+	import { apiFacade } from '../../../shared/index';
 
-	import { emailStore } from '../model/stores/emailStore';
-	import { showMessage } from '../../../shared/model/stores/messageStore';
-	import { closeModal } from '../../../shared/model/stores/modalStore';
+	import { emailStore } from '../../index';
+	import { showMessage } from '../../../shared/index';
+	import { closeModal } from '../../../shared/index';
 
 	import { goto } from '$app/navigation';
 	import { tick } from 'svelte';

@@ -1,4 +1,4 @@
-import fetchWithRefresh from '../../../shared/lib/api/fetchWithRefresh';
+import { fetchWithRefresh } from '../../../shared/index';
 
 export const createLobby = async (lobbyData: {
 	ante: number;

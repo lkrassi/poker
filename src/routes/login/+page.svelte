@@ -1,5 +1,5 @@
 <script>
-	import LoginForm from '../../features/auth/ui/LoginForm.svelte';
+	import { LoginForm } from '../../features/index';
 </script>
 
 <main class="login background-image">

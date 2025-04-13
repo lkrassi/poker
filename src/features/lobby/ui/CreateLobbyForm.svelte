@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { apiFacade } from '../../../shared/lib/api/apiFacade';
+	import { apiFacade } from '../../../shared/index';
 
-	import MoneyIcom from '../../../shared/assets/icons/MoneyIcom.svelte';
-	import TimeIcon from '../../../shared/assets/icons/TimeIcon.svelte';
-	import UserIcon from '../../../shared/assets/icons/UserIcon.svelte';
-	import ChipIcon from '../../../shared/assets/icons/ChipIcon.svelte';
+	import { MoneyIcon } from '../../../shared/index';
+	import { TimeIcon } from '../../../shared/index';
+	import { UserIcon } from '../../../shared/index';
+	import { ChipIcon } from '../../../shared/index';
 
-	import { showMessage } from '../../../shared/model/stores/messageStore';
+	import { showMessage } from '../../../shared/index';
 
 	let ante: number | null = null;
 	let blindIncreaseTime: number | null = null;
@@ -73,7 +73,7 @@
 		</div>
 		<form class="create-lobby__form" on:submit|preventDefault={handleCreateLobby}>
 			<div class="create-lobby__input-container">
-				<MoneyIcom />
+				<MoneyIcon />
 				<input
 					type="number"
 					id="ante"

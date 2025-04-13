@@ -1,19 +1,19 @@
-import { claimDailyReward } from '../../../features/profile/api/dailyReward';
-import { getUserByUsername } from '../../../features/profile/api/getUserByUsername';
-import { updateUsername } from '../../../features/profile/api/updateUsername';
-import { updateProfilePic } from '../../../features/profile/api/updateProfilePic';
+import { claimDailyReward } from '../../../features/index';
+import { getUserByUsername } from '../../../features/index';
+import { updateUsername } from '../../../features/index';
+import { updateProfilePic } from '../../../features/index';
 
-import { loginUser } from '../../../features/auth/api/login';
-import { registerUser } from '../../../features/auth/api/register';
-import { refreshToken } from '../../../features/auth/api/refresh';
+import { loginUser } from '../../../features/index';
+import { registerUser } from '../../../features/index';
+import { refreshToken } from '../../../features/index';
 
-import { sendConfirmationCode } from '../../../features/auth/api/sendCode';
-import { confirmEmail } from '../../../features/auth/api/confirmEmail';
+import { sendConfirmationCode } from '../../../features/index';
+import { confirmEmail } from '../../../features/index';
 
-import { createLobby } from '../../../features/lobby/api/createLobby';
-import { getAllLobbies } from '../../../features/lobby/api/getAllLobbies';
+import { createLobby } from '../../../features/index';
+import { getAllLobbies } from '../../../features/index';
 
-import { withLoader } from '../../../shared/lib/utils/loader';
+import { withLoader } from '../../../shared/index';
 
 export const apiFacade = {
 	claimDailyReward: () => withLoader(claimDailyReward()),

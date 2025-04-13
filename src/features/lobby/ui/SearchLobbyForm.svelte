@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { apiFacade } from '../../../shared/lib/api/apiFacade';
+	import { apiFacade } from '../../../shared/index';
 
 	interface LobbyInfo {
 		lobby_id: string;

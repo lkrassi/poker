@@ -1,6 +1,6 @@
 <script>
-	import SearchLobbyForm from '../../features/lobby/ui/SearchLobbyForm.svelte';
-	import Header from '../../widgets/header/ui/Header.svelte';
+	import { SearchLobbyForm } from '../../features/index';
+	import { Header } from '../../widgets/index';
 </script>
 
 <main class="search-lobby background-image">

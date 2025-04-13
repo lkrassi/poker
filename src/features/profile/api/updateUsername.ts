@@ -1,6 +1,6 @@
-import fetchWithRefresh from '../../../shared/lib/api/fetchWithRefresh';
+import { fetchWithRefresh } from '../../../shared/index';
 
-import { setUser, userStore } from '../model/stores/userStore';
+import { setUser, userStore } from '../../index';
 
 import { get } from 'svelte/store';
 

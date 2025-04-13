@@ -1,5 +1,5 @@
-import { sendConfirmationCode } from '../api/sendCode';
-import { setUser } from '../../profile/model/stores/userStore';
+import { sendConfirmationCode } from './sendCode';
+import { setUser } from '../../index';
 
 export const loginUser = async (email: string, password: string) => {
 	try {

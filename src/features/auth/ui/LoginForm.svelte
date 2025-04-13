@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { apiFacade } from '../../../shared/lib/api/apiFacade';
+	import { apiFacade } from '../../../shared/index';
 
 	import ConfirmEmailForm from './ConfirmEmailForm.svelte';
 
-	import EmailIcon from '../../../shared/assets/icons/EmailIcon.svelte';
-	import PasswordIcon from '../../../shared/assets/icons/PasswordIcon.svelte';
+	import { EmailIcon } from '../../../shared/index';
+	import { PasswordIcon } from '../../../shared/index';
 
-	import { withLoader } from '../../../shared/lib/utils/loader';
+	import { withLoader } from '../../../shared/index';
 
-	import { emailStore } from '../model/stores/emailStore';
-	import { showMessage } from '../../../shared/model/stores/messageStore';
-	import { openModal } from '../../../shared/model/stores/modalStore';
+	import { emailStore } from '../../index';
+	import { showMessage } from '../../../shared/index';
+	import { openModal } from '../../../shared/index';
 
 	import { goto } from '$app/navigation';
 

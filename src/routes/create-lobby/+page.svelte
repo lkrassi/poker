@@ -1,6 +1,6 @@
 <script>
-	import CreateLobbyForm from '../../features/lobby/ui/CreateLobbyForm.svelte';
-	import Header from '../../widgets/header/ui/Header.svelte';
+	import { CreateLobbyForm } from '../../features/index';
+	import { Header } from '../../widgets/index';
 </script>
 
 <main class="create-lobby background-image">

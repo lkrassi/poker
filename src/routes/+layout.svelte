@@ -2,13 +2,13 @@
 	import { onMount } from 'svelte';
 	import { beforeNavigate, goto } from '$app/navigation';
 
-	import Message from '../shared/ui/Message/ui/Message.svelte';
-	import Loader from '../shared/ui/Loader/ui/Loader.svelte';
-	import Modal from '../shared/ui/Modal/ui/Modal.svelte';
+	import { Message } from '../shared/index';
+	import { Loader } from '../shared/index';
+	import { Modal } from '../shared/index';
 
-	import { isLoading } from '../shared/model/stores/loaderStore';
-	import { modalStore, type ModalState } from '../shared/model/stores/modalStore';
-	import { showMessage } from '../shared/model/stores/messageStore';
+	import { isLoading } from '../shared/index';
+	import { modalStore, type ModalState } from '../shared/index';
+	import { showMessage } from '../shared/index';
 
 	let modalState: ModalState;
 

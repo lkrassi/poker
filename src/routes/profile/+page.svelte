@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Profile from '../../features/profile/ui/ProfileForm.svelte';
-	import Header from '../../widgets/header/ui/Header.svelte';
+	import { ProfileForm } from '../../features/index';
+	import { Header } from '../../widgets/index';
 </script>
 
 <main class="profile background-image">
 	<Header />
-	<Profile />
+	<ProfileForm />
 </main>

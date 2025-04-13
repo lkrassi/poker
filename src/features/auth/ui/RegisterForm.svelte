@@ -1,16 +1,16 @@
 <script lang="ts">
 	import ConfirmEmailForm from './ConfirmEmailForm.svelte';
 
-	import UserIcon from '../../../shared/assets/icons/UserIcon.svelte';
-	import EmailIcon from '../../../shared/assets/icons/EmailIcon.svelte';
-	import PasswordIcon from '../../../shared/assets/icons/PasswordIcon.svelte';
+	import { UserIcon } from '../../../shared/index';
+	import { EmailIcon } from '../../../shared/index';
+	import { PasswordIcon } from '../../../shared/index';
 
-	import { withLoader } from '../../../shared/lib/utils/loader';
-	import { apiFacade } from '../../../shared/lib/api/apiFacade';
+	import { withLoader } from '../../../shared/index';
+	import { apiFacade } from '../../../shared/index';
 
-	import { emailStore } from '../model/stores/emailStore';
-	import { showMessage } from '../../../shared/model/stores/messageStore';
-	import { openModal } from '../../../shared/model/stores/modalStore';
+	import { emailStore } from '../../index';
+	import { showMessage } from '../../../shared/index';
+	import { openModal } from '../../../shared/index';
 
 	let username: string = '';
 	let email: string = '';

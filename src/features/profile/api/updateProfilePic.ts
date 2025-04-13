@@ -1,6 +1,6 @@
 import { getUserByUsername } from './getUserByUsername';
 
-import fetchWithRefresh from '../../../shared/lib/api/fetchWithRefresh';
+import { fetchWithRefresh } from '../../../shared/index';
 
 export const updateProfilePic = async (file: File) => {
 	try {

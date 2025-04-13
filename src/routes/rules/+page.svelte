@@ -1,6 +1,6 @@
 <script>
-	import Rules from '../../features/rules/ui/Rules.svelte';
-	import Header from '../../widgets/header/ui/Header.svelte';
+	import { Rules } from '../../features/index';
+	import { Header } from '../../widgets/index';
 </script>
 
 <main class="rules">

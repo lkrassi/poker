@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { apiFacade } from '../../../shared/lib/api/apiFacade';
+	import { apiFacade } from '../../../shared/index';
 
 	import Ellipsis from './Ellipsis.svelte';
 	import Logout from './Logout.svelte';
@@ -7,10 +7,10 @@
 	import UpdateUsername from './UpdateUsername.svelte';
 	import ImageModal from './ImageModal.svelte';
 
-	import ChipsIcon from '../../../shared/assets/icons/ChipsIcon.svelte';
+	import { ChipsIcon } from '../../../shared/index';
 
 	import { userStore } from '../model/stores/userStore';
-	import { openModal, closeModal } from '../../../shared/model/stores/modalStore';
+	import { openModal, closeModal } from '../../../shared/index';
 
 	import { onMount } from 'svelte';
 

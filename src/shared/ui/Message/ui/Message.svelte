@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { messageStore } from '../../../model/stores/messageStore';
+	import { messageStore } from '../../../index';
 
 	import { onDestroy } from 'svelte';
 

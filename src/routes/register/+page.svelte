@@ -1,5 +1,5 @@
 <script>
-	import RegisterForm from '../../features/auth/ui/RegisterForm.svelte';
+	import { RegisterForm } from '../../features/index';
 </script>
 
 <main class="register background-image">

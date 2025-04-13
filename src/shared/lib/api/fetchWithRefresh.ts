@@ -1,6 +1,6 @@
 import { apiFacade } from './apiFacade';
 
-const fetchWithRefresh = async (url: string, options: RequestInit): Promise<Response> => {
+export const fetchWithRefresh = async (url: string, options: RequestInit): Promise<Response> => {
 	let res = await fetch(url, options);
 
 	if (res.status === 401) {
@@ -26,5 +26,3 @@ const fetchWithRefresh = async (url: string, options: RequestInit): Promise<Resp
 
 	return res;
 };
-
-export default fetchWithRefresh;
