@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Shafarik&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* border: 4px solid green; откуда горизонтальный скролл */
+}
+
+body {
+	font-family: 'Playfair Display', serif;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+}
+
+.background-image {
+	min-height: 100vh;
+	background-image: url('/images/back.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.table {
+	min-height: 100vh;
+	background-image: url('/images/table.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin: 0 auto;
+}
+
+input,
+textarea,
+select {
+	font-family: 'Playfair Display', serif;
+	font-size: 16px;
+	width: 100%;
+	padding: 10px;
+	border-radius: 4px;
+	color: var(--text-color);
+}
+
+input::placeholder {
+	opacity: 0.7;
+}
+
+button {
+	font-family: 'Playfair Display', serif;
+	font-size: 16px;
+	display: inline-block;
+	padding: 0.7rem;
+	border: none;
+	outline: none;
+	border-radius: 15px;
+	cursor: pointer;
+	background: none;
+}
+
+p {
+	color: var(--text-color);
+}
+
+a {
+	font-size: 16px;
+	position: relative;
+	text-decoration: none;
+	outline: none;
+	color: var(--text-color);
+}
+
+a::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	width: 0;
+	height: 0.05rem;
+	background-color: var(--text-color);
+	transition: 0.3s ease;
+	transform: translateX(-50%);
+}
+
+a:hover::after,
+a:focus::after {
+	width: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+:root {
+	--success-message: rgb(41, 205, 41);
+	--error-message: rgb(255, 45, 45);
+	--bg-color: #000;
+	--bg-color-hover: #c5c5c5;
+	--text-color: #e3e3e3;
+	--text-color-hover: #3e3e3e;
+	--box-shadow-color: rgba(0, 0, 0, 0.1);
+	--modal-overlay-color: rgba(0, 0, 0, 0.8);
+	--primary-color: #292929;
+	--primary-color-hover: #434343;
+	--border-color: rgba(255, 255, 255, 0.3);
+	--input-bg-color: #fff;
+	--heading-rules-color: #ff0000;
+	--text-rules-color: rgb(3, 136, 3);
+	--modal-back-color: rgba(0, 0, 0, 0.5);
+	--scroll-color: #656565;
+	--scroll-color-hover: #505050;
+}
+
+::-webkit-scrollbar {
+	width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--scroll-color);
+	border-radius: 10px;
+	border: 2px solid var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: var(--scroll-color-hover);
+}
