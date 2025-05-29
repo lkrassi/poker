@@ -29,7 +29,8 @@ export const handlePlayerEnter = async (message: any) => {
 			username: user.username,
 			balance: user.balance || 0,
 			profile_picture_url:
-				user.profile_picture_url || 'https://poker-tt7i.onrender.com/profiles/default_pic.jpg',
+				user.profile_picture_url ||
+				`https://${import.meta.env.VITE_BASE_URL}/profiles/default_pic.jpg`,
 			email: user.email || '',
 			stats: user.stats || {
 				max_balance: 0,

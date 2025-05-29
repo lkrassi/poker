@@ -73,7 +73,7 @@ export const connect = (lobbyId: string) => {
 	}
 
 	console.log('Подключение к WebSocket...');
-	const wsUrl = `${import.meta.env.VITE_BASE_URL}/ws/enter?lobby_id=${lobbyId}`;
+	const wsUrl = `wss://${import.meta.env.VITE_BASE_URL}/ws/enter?lobby_id=${lobbyId}`;
 	socket = new WebSocket(wsUrl);
 
 	socket.onopen = () => {
