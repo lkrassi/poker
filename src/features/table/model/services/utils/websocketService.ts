@@ -87,6 +87,11 @@ export const connect = (lobbyId: string) => {
 	socket.onmessage = (event) => {
 		try {
 			const message = JSON.parse(event.data) as WebSocketMessage;
+			console.log('=== Входящее сообщение ===');
+			console.log('Тип сообщения:', message.event_type || 'lobby_info');
+			console.log('Данные сообщения:', message.event_data || message);
+			console.log('========================');
+
 			handleMessage(message);
 		} catch (error) {
 			console.error('Ошибка при обработке сообщения:', error);
